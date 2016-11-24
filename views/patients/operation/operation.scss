@@ -1,0 +1,78 @@
+@charset "UTF-8";
+.patient-operation {
+    .container {
+        padding-top: 12px;
+        .item-checkbox {
+            font-size: 16px;
+            height: 44px;
+            line-height: 44px;
+            padding-left: 12px;
+            padding-top: 0;
+            padding-bottom: 0;
+            .checkbox {
+                left: auto;
+                right: 2px;
+            }
+            .checkbox input, .checkbox-icon {
+                width: 22px;
+                height: 22px;
+                margin-top: 3px;
+            }
+            .item-content {
+                color: #84898d;
+            }
+        }
+        .input-box{
+            position: relative;
+            input {
+                padding-right: 28px;
+            }
+            .input-date {
+                position: absolute;
+                right: 5px;
+                top:11px;
+                width: 22px;
+                height: 22px;
+            }
+        }
+        .mtnumber {
+            max-height: 216px;
+            border: 1px solid #b4b4b4;
+            font-size: 14px;
+            color: #181f2a;
+            border-radius: 6px;
+            margin: 0 12px;
+            background: #fff;
+            .number-item {
+                overflow: hidden;
+                &+.number-item {
+                    border-top: 1px solid #ddd;
+                }
+                padding: 0 12px;
+                div {
+                    height: 44px;
+                    line-height: 44px;
+                    float: left;
+                    &:last-child {
+                        float: right;
+                        overflow: hidden;
+                        span,i {
+                            float: left;
+                        }
+                        span {
+                            display: inline-block;
+                            padding: 0 28px;
+                        }
+                        i {
+                            color: #43cea9;
+                            font-size: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.checkbox input:after, .checkbox-icon:after {
+    width: 12px;
+}

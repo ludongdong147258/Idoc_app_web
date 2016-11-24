@@ -1,0 +1,120 @@
+@charset 'utf-8';
+@import 'helpers/helpers';
+////
+// 账号相关
+//
+////
+.account {
+    // 登录
+    &.login {
+        background-image: url('images/bg.jpg');
+        background-size: cover;
+        .logo {
+            width: 74px;
+            height: 54px;
+            margin: 80px auto 40px auto;
+
+            background-image: url('images/logo.png');
+            background-size: 74px 54px;
+        }
+        .input-wrapper {
+            border: none;
+            background-color: rgba(255, 255, 255, .1);
+            input:-webkit-autofill {
+                -webkit-box-shadow: 0 0 0 1000px #a3b0c0 inset;
+            }
+            input {
+                color: #fff;
+            }
+            input::-webkit-input-placeholder,
+            textarea::-webkit-input-placeholder {
+                color: #a3b0c0;
+            }
+            input:-moz-placeholder,
+            textarea:-moz-placeholder {
+                color: #a3b0c0;
+            }
+            input::-moz-placeholder,
+            textarea::-moz-placeholder {
+                color: #a3b0c0;
+            }
+            input:-ms-input-placeholder,
+            textarea:-ms-input-placeholder {
+                color: #a3b0c0;
+            }
+        }
+        .login-mobile {
+            display: block;
+
+            width: 287px;
+            margin: 0 auto 12px auto;
+            input {
+                width: 100%;
+                padding-right: 12px;
+            }
+            .btn-send {
+                display: inline-block;
+
+                width: 70px;
+                min-width: 70px;
+                margin-top: -11px;
+
+                text-align: center;
+
+                color: #a3b0c0;
+                &::before {
+                    position: absolute;
+                    top: 17px;
+                    right: 78px;
+
+                    height: 12px;
+
+                    content: ' ';
+
+                    border-left: 1px solid #a3b0c0;
+                }
+            }
+        }
+        .login-code {
+            display: block;
+
+            width: 287px;
+            margin: 0 auto 40px auto;
+        }
+        .forget {
+            font-size: 12px;
+
+            margin-top: 12px;
+
+            text-align: center;
+
+            color: #fff;
+        }
+        .register {
+            font-size: 12px;
+            line-height: 44px;
+
+            position: absolute;
+            bottom: 0;
+
+            width: 100%;
+            height: 44px;
+
+            text-align: center;
+
+            color: #fff;
+            border-top: 1px solid #a3b0c0;
+            background-color: rgba(255, 255, 255, .2);
+        }
+    }
+    // 注册
+    // ----------------------------------------
+    &.register {
+        padding: 12px;
+    }
+    // 忘记密码
+    // ----------------------------------------
+    &.forget-password {
+        padding: 12px;
+    }
+}

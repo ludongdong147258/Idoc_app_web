@@ -1,0 +1,19 @@
+<ion-modal-view class="patient-modal process-modal">
+    <ion-header-bar align-title="center">
+        <div class="buttons">
+            <a class="button button-icon icon ion-ios-close-empty button-left" ng-click="closeProcessModal()"></a>
+        </div>
+        <h1 class="title">更改流程</h1>
+        <div class="buttons">
+            <button class="button button-right button-clear">完成</button>
+        </div>
+    </ion-header-bar>
+    <ion-content>
+        <h1 class="process-title">请选择详细流程</h1>
+        <ion-list>
+            <ion-checkbox ng-model="filter.blue">流程1</ion-checkbox>
+            <ion-checkbox ng-model="filter.yellow">流程2</ion-checkbox>
+            <ion-checkbox ng-model="filter.pink">流程3</ion-checkbox>
+        </ion-list>
+    </ionic-content>
+</ion-modal-view>

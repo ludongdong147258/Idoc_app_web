@@ -1,0 +1,111 @@
+@charset "UTF-8";
+.patient-baseInfo {
+    background: #f3f3f3;
+    a.item {
+        margin-top: 12px;
+    }
+    .item-avatar {
+        img {
+            top: 25px;
+        }
+    }
+    .bed-box {
+        background: #fbfcfc;
+        border: 1px solid #e1e2e2;
+        border-left: none;
+        border-right: none;
+        overflow: hidden;
+        padding: 0 12px;
+        margin: 12px 0;
+        height: 48px;
+        line-height: 48px;
+        > div {
+            float: left;
+            width: 30%;
+        }
+        .left {
+            img {
+                width: 22px;
+                height: 22px;
+                vertical-align: middle;
+            }
+            span {
+                font-size: 14px;
+                color: #84898d;
+            }
+        }
+        .right {
+            width: 70%;
+            text-align: right;
+            span {
+                color: #181f2a;
+                font-size: 16px;
+            }
+            i {
+                font-size: 22px;
+                color: #84898d;
+            }
+        }
+    }
+    .normal-box {
+        border-bottom: none;
+        margin-bottom: 0;
+    }
+    .desc-box {
+        position: relative;
+        border-bottom: 1px solid #e1e2e2;
+        height: 48px;
+        line-height: 48px;
+        background: #fbfcfc;
+        padding-left: 36px;
+        font-size: 16px;
+        color: #181f2a;
+        .line {
+            border-bottom: 1px solid #e1e2e2;
+        }
+        span {
+            margin-left: 5px;
+        }
+        span.right {
+            position: absolute;
+            right: 12px;
+            color: #84898d;
+        }
+        .tag-box {
+            overflow: hidden;
+            padding: 16px 0;
+            span {
+                float: left;
+                display: inline-block;
+                height: 32px;
+                line-height: 32px;
+                text-align: center;
+                font-size: 16px;
+                min-width: 110px;
+                background-color: #43cea9;
+                border-radius: 6px;
+                color: #fff;
+                margin-bottom: 5px;
+                margin-right: 10px;
+                margin-left: 0;
+                padding:0 20px;
+            }
+        }
+    }
+    .no-border {
+        border: none;
+    }
+    .diagnose-box {
+        height: auto;
+        text-align: justify;
+        padding: 0 12px 16px 36px;
+        line-height: normal;
+        span {
+            margin-top: 16px;
+            display: inline-block;
+            word-wrap: break-word;
+            word-break: break-all;
+            overflow: hidden;
+        }
+    }
+}

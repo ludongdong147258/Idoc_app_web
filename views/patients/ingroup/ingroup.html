@@ -1,0 +1,31 @@
+<ion-view title="入组" hide-nav-bar="true" class="patient-ingroup patient-tag">
+    <ion-header-bar align-title="center">
+        <div class="buttons">
+            <button class="button-clear button ion-back" ng-click="back()">
+                <i class="icon ion-ios-arrow-left"></i>
+            </button>
+        </div>
+        <h1 class="title">入组</h1>
+    </ion-header-bar>
+    <ion-content>
+        <ion-list>
+            <div class="checkbox-box" ng-repeat="item in researchList">
+                <ion-checkbox ng-model="item.isSelected" ng-true-value="true" ng-false-value="false" ng-change="selectParent(item)" class="parent">{{item.researchName}}
+                    <i class="icon ion-ios-arrow-down icon-arrow" ng-hide="item.isSelected"></i>
+                    <i class="icon ion-ios-arrow-up icon-arrow" ng-show="item.isSelected"></i>
+                </ion-checkbox>
+                <div class="child" ng-show="item.isSelected">
+                    <ion-checkbox ng-model="subItem.isSelected" ng-true-value="true" ng-false-value="false" ng-change="selectChild(subItem)"
+                    ng-repeat="subItem in item.detailList">{{subItem.detailName}}</ion-checkbox>
+                </div>
+            </div>
+        </ion-list>
+    </ion-content>
+    <ion-footer-bar>
+        <div class="row">
+            <div class="col footer-buttons">
+                <button class="button button-block" ng-click="addIngroup()">确定</button>
+            </div>
+        </div>
+    </ion-footer-bar>
+</ion-view>

@@ -1,0 +1,63 @@
+<ion-view title="安排住院" hide-nav-bar="true" class="patient-add patient-tag patient-inhospital doctor-modal">
+    <ion-header-bar align-title="center">
+        <div class="buttons">
+            <button class="button-clear button ion-back" ng-click="back()">
+                <i class="icon ion-ios-arrow-left"></i>
+            </button>
+        </div>
+        <h1 class="title">安排住院</h1>
+    </ion-header-bar>
+    <ion-content class="container">
+        <div class="top-nav">
+            <div ng-click="openBedModal()">
+                <div class="icon-box">
+                    <img src="../../../core/images/icon-bed@2x.png"/>
+                    <span>添加床位</span>
+                </div>
+            </div>
+            <div>
+                <div class="icon-box">
+                    <img src="../../../core/images/icon-inhospital@2x.png"/>
+                    <span>安排出院</span>
+                </div>
+            </div>
+        </div>
+        <h2 class="small-title">请设置<span>入院节点</span>开始时间</h2>
+        <div class="input-box">
+            <input type="text" ng-model="inTime" readonly="readonly" placeholder="请选择入院节点开始时间"/>
+            <img src="../../../core/images/icon-date@2x.png" class="input-date" ng-click="selectDate()"/>
+        </div>
+        <div class="top-nav normal-nav">
+            <div>
+                <div class="icon-box">
+                    <img src="../../../core/images/icon-waiting-patient@2x.png"/>
+                    <span>待入院病人</span>
+                </div>
+            </div>
+        </div>
+        <div ng-repeat="item in inhospitalPatList" class="bed-item">
+            <div class="doctor-box">
+                <span>{{item.pname}}<em>{{item.gender}}</em></span>
+                <div class="input-box" ng-class="{expand:item.showBed}">
+                    <input type="text" placeholder="请选择床位" ng-model="item.patBebInfo.v" ng-class="{'border-none':item.showBed}" readonly="true" ng-click="showBedList(item)" ng-blur="hideBedList(item)">
+                    <i class="icon" ng-class="{'ion-ios-arrow-down':!item.showBed,'ion-ios-arrow-up':item.showBed}"></i>
+                    <ion-scroll zooming="false" ng-show="item.showBed" direction="y">
+                        <ion-list>
+                            <ion-radio name="{{item.radioName}}" ng-repeat="subItem in item.bedList" icon="ion-checkmark-circled" ng-value="subItem.k" ng-model="item.data.bedId" ng-change="selectBed(subItem,item)">{{subItem.v}}</ion-radio>
+                        </ion-list>
+                    </ion-scroll>
+                </div>
+            </div>
+            <h1 class="line"></h1>
+        </div>
+        <time-picker id="patInHos" ok-handler="callback(result)" hidetime="true" title="请选择|入院节点|开始时间" yearstart="1990"
+                     time-picker-result="result" format="yyyy-MM-dd"></time-picker>
+    </ion-content>
+    <ion-footer-bar>
+        <div class="row">
+            <div class="col footer-buttons">
+                <button class="button button-block" ng-click="patientInHospital()">确定</button>
+            </div>
+        </div>
+    </ion-footer-bar>
+</ion-view>

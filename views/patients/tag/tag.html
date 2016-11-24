@@ -1,0 +1,28 @@
+<ion-view title="标签" hide-nav-bar="true" class="patient-tag">
+    <ion-header-bar align-title="center">
+        <div class="buttons">
+            <button class="button-clear button ion-back" ng-click="back()">
+                <i class="icon ion-ios-arrow-left"></i>
+            </button>
+        </div>
+        <h1 class="title">标签</h1>
+    </ion-header-bar>
+    <ion-content>
+        <div class="container">
+            <h1 class="tip">最多只能选三个标签</h1>
+            <div class="tag-box">
+                <span ng-click="openModal()">
+                    <i class="icon ion-plus-circled"></i>
+                </span>
+                <span ng-class="{active:(item.isSelect == 1)}" ng-repeat="item in tagList" ng-click="changeState(item)">{{item.tagText}}</span>
+            </div>
+        </div>
+    </ion-content>
+    <ion-footer-bar>
+        <div class="row">
+            <div class="col footer-buttons">
+                <button class="button button-block" ng-click="saveTagInfo()">确定</button>
+            </div>
+        </div>
+    </ion-footer-bar>
+</ion-view>

@@ -1,0 +1,201 @@
+@charset "UTF-8";
+.patient-add {
+    .title {
+        color: #fff;
+    }
+    .top-tip {
+        background: #f3f3f3;
+        color: #84898d;
+        font-size: 12px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+    }
+    .error-msg {
+        color: #fff;
+        background: #ff5a60;
+        height: 32px;
+        line-height: 32px;
+        text-align: center;
+        font-size: 12px;
+    }
+    .small-title {
+        color: #181f2a;
+        font-size: 12px;
+        margin-left: 24px;
+        margin-bottom: 8px;
+        &.error {
+            color: #ff5a60;
+            margin-top: -10px;
+        }
+    }
+    .input-box {
+        margin: 0 12px;
+        margin-bottom: 12px;
+        position: relative;
+        &.expand {
+            border: 1px solid #43cea9;
+            border-radius: 6px;
+        }
+        input,textarea {
+            resize: none;
+            height: 44px;
+            font-size: 15px;
+            background: #fff;
+            display: block;
+            padding: 12px;
+            border: 1px solid #b4b4b4;
+            color: #181f2a;
+            border-radius: 6px;
+            width: 100%;
+            ::-webkit-input-placeholder {
+                color: #84898d;
+            }
+            ::-moz-placeholder {
+                color: #84898d;
+            }
+            :-moz-placeholder {
+                color: #84898d;
+            }
+            &:focus {
+                border: 1px solid #43cea9;
+            }
+            &.error-border {
+                border: 1px solid #ff5a60;
+            }
+        }
+        .input-span {
+            display: inline-block;
+            width: 100%;
+            height: 44px;
+            line-height: 44px;
+            border-radius: 6px;
+            background: #d7e1f2;
+            padding-left: 10px;
+            color: #83898d;
+        }
+        textarea {
+            height: 87px;
+        }
+        > i {
+            position: absolute;
+            font-size: 22px;
+            color: #43cea9;
+            right: 12px;
+            top:12px;
+        }
+        ion-scroll {
+            max-height:216px;
+        }
+        .list {
+            max-height:216px;
+        }
+        ion-list {
+            i {
+                color: #43cea9;
+            }
+            .radio-content {
+                height: 44px;
+                color: #84898d;
+            }
+            .item {
+                height: 44px;
+                color: #84898d;
+                &:nth-child(5) {
+                    border-bottom:none;
+                    border-right-color: #43cea9;
+                    border-left-color: #43cea9;
+                    border-bottom-right-radius: 7px;
+                    border-bottom-left-radius: 7px;
+                }
+            }
+            .item-radio {
+                .item-content {
+                    padding: 9px 24px 9px 16px;
+                    span {
+                        color: #84898d;
+                        font-size: 15px;
+                    }
+                }
+                .radio-icon {
+                    top:-12px;
+                }
+                input:checked + .radio-content{
+                    span {
+                        color: #181f2a;
+                    }
+                }
+            }
+        }
+        input.border-none {
+            border: none;
+        }
+    }
+    .button-box {
+        margin: 0 45px;
+        padding-top: 24px;
+        .button {
+            background: #43cea9;
+            color: #fff;
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 0;
+            &+.button {
+                margin-top: 16px;
+            }
+        }
+    }
+    .mutile-input {
+        overflow: hidden;
+        > div:first-child {
+            float: left;
+        }
+        .left {
+            width: 72.5%;
+        }
+        @media screen and (min-width:376px){
+            .left {
+                width: 75%;
+            }
+        }
+        @media screen and (max-width:361px){
+            .left {
+                width: 71.5%;
+            }
+        }
+        @media screen and (max-width:321px){
+            .left {
+                width: 68%;
+            }
+        }
+        .right {
+            float: right;
+            width: 90px;
+            margin-right: 12px;
+            .input-box {
+                margin: 0;
+            }
+            .small-title {
+                margin-left: 12px;
+            }
+        }
+    }
+}
+.patient-modal {
+    .title {
+        color: #181f2a;
+        font-size: 18px;
+    }
+    .bar {
+        background-color: #fbfcfc !important;
+        .button-right {
+            color: #43cea9;
+            font-size: 15px;
+        }
+        .button-left {
+            padding-top: 4px;
+            padding-left: 16px;
+            color: #a7abad;
+        }
+    }
+}

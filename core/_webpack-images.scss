@@ -1,0 +1,43 @@
+
+@charset 'utf-8';
+
+////
+/// 全局公用的图标，写法与font图标一致，只是一种过度方案
+///
+/// - 注： 该文件由 webpack管理，所以可以解决图片发布问题
+/// @group undefined
+/// @author hys
+////
+[class^='icon-'],
+[class*=' icon-'] {
+    display: inline-block;
+
+    vertical-align: middle;
+
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+// 图标按钮
+.icon-button {
+    position: relative;
+    &::after {
+        position: absolute;
+        top: -6px;
+        right: -6px;
+        bottom: -6px;
+        left: -6px;
+
+        display: block;
+
+        content: ' ';
+    }
+}
+
+// 向右箭头
+.icon-arrow-right {
+    width: 15px;
+    height: 15px;
+
+    background-image: url('images/icon-arrow-right.png');
+}

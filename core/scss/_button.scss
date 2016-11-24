@@ -1,0 +1,118 @@
+@charset 'utf-8';
+////
+/// 按钮
+///
+/// @group undefined
+/// @author hys
+////
+.button,
+input[type='button'],
+button {
+    font-size: 14px;
+    line-height: 44px;
+
+    min-width: 74px;
+    height: 44px;
+    min-height: 0;
+    padding: 0 12px;
+
+    color: $font-color-base;
+    // 默认的按钮
+    &.button-default {
+        font-family: $font-family-loud;
+
+        color: #fff;
+        border-color: $primary-color;
+    }
+    &.button-confirm {
+        display: block;
+
+        width: 278px;
+        margin: 0 auto;
+
+        background-color: $primary-color;
+    }
+    &.button-blue {
+        line-height: 32px;
+
+        height: 32px;
+
+        color: #fff;
+        background-color: $blue;
+    }
+    &.button-red {
+        background-color: $red;
+    }
+    &.button-outline {
+        border-color: $primary-color;
+        background: transparent;
+    }
+    &.button-outline-red {
+        color: $red;
+        border-color: $red;
+        background: transparent;
+    }
+    &.button-clean {
+        padding: 0;
+
+        border: none;
+        background: transparent;
+    }
+    // 按钮禁用样式
+    &.disabled,
+    &[disabled] {
+        cursor: default !important;
+        pointer-events: none;
+
+        opacity: 1;
+        color: #ccc;
+        border: 1px solid #b3b3b3 !important;
+        background-color: #b3b3b3 !important;
+        &.button-outline,
+        &.button-outline-red {
+            background-color: transparent !important;
+        }
+        &.button-clean {
+            padding: 0;
+
+            border: none !important;
+            background-color: transparent !important;
+        }
+    }
+}
+//  重置 ionic-button
+.bar .button,
+.bar button {
+    border: none;
+}
+.bar .title + .button:last-child,
+.bar > .button + .button:last-child,
+.bar > .button.pull-right,
+.bar .buttons.pull-right,
+.bar .title + .buttons {
+    font-size: 14px;
+
+    top: 0;
+    right: 12px;
+
+    color: $primary-color;
+}
+.bar .ion-android-close {
+    color: #b2b2b2;
+}
+.bar .button.button-clear .icon:before,
+.bar .button.button-clear.icon:before,
+.bar .button.button-clear.icon-left:before,
+.bar .button.button-clear.icon-right:before,
+.bar button.button-clear .icon:before,
+.bar button.button-clear.icon:before,
+.bar button.button-clear.icon-left:before,
+.bar button.button-clear.icon-right:before {
+    font-size: 24px;
+    line-height: 24px;
+}
+.bar-header,
+.bar {
+    border: none;
+    background: transparent;
+}

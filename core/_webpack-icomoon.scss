@@ -1,0 +1,58 @@
+@charset 'utf-8';
+@import 'helpers/helpers';
+
+////
+/// 自定义字体图标
+///
+/// @group undefined
+/// @author hys
+////
+
+$icomoon-font-path-self: 'fonts' !default;
+$icomoon-font-family: 'icomoon' !default;
+$icomoon-prefix: 'icomoon-' !default;
+@font-face {
+    font-family: 'icomoon';
+    font-weight: normal;
+    font-style: normal;
+
+    src: url('fonts/icomoon.eot');
+    src: url('fonts/icomoon.eot?#iefix') format('embedded-opentype'), url('fonts/icomoon.ttf') format('truetype'), url('fonts/icomoon.woff') format('woff'), url('fonts/icomoon.svg#icomoon') format('svg');
+}
+[class^='#{$icomoon-prefix}'],
+[class*=' #{$icomoon-prefix}'] {
+    font-family: '#{$icomoon-font-family}';
+    font-weight: normal;
+    font-style: normal;
+    font-variant: normal;
+    line-height: 1;
+
+    text-transform: none;
+
+    speak: none;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.#{$icomoon-prefix}like:before {
+    content: '\e600';
+}
+.#{$icomoon-prefix}collection:before {
+    content: '\f388';
+
+    color: $red;
+}
+.#{$icomoon-prefix}collection-outline:before {
+    content: '\f387';
+
+    color: $red;
+}
+.#{$icomoon-prefix}happy:before {
+    content: '\f31c';
+}
+.#{$icomoon-prefix}happy-outline:before {
+    content: '\f3c6';
+}
+.#{$icomoon-prefix}service-card:before {
+    content: '\e601';
+}

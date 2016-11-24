@@ -1,0 +1,70 @@
+.list.card {
+    margin: $content-margin;
+}
+
+// 带右侧箭头的列表
+// -----------------------------------------------------------------------------
+.list-arrow {
+    margin-bottom: 0;
+    padding-top: 0;
+    .font-color-quiet {
+        color: $font-color-quiet;
+    }
+    .item {
+        font-size: 14px;
+
+        padding: 0 15px;
+
+        color: #4c4c4c;
+    }
+    .item-input {
+        padding: 0 0 0 15px;
+        input[type='tel'],
+        input[type='text'] {
+            font-size: 14px;
+
+            display: inline;
+
+            height: auto;
+            padding: 15px 0;
+        }
+    }
+    .icon-left {
+        line-height: 47px;
+
+        overflow: hidden;
+
+        height: 47px;
+        &::before {
+            font-size: 22px;
+            line-height: 19px;
+
+            width: 23px;
+
+            text-align: left;
+            vertical-align: middle;
+
+            color: $grey-light;
+        }
+    }
+    .icon-right {
+        font-size: 20px;
+        line-height: 47px;
+
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        padding-right: 15px;
+
+        text-align: right;
+
+        color: $grey-light;
+    }
+}
+
+// 带右侧箭头的列表
+// -----------------------------------------------------------------------------
+.list .item {
+    @include border('.list .item', 0, 0, 1, 0);
+}

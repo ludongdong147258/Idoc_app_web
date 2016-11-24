@@ -1,0 +1,47 @@
+<ion-modal-view class="patient-add patient-modal addbed-modal" hide-nav-bar="true">
+    <ion-header-bar align-title="center">
+        <div class="buttons">
+            <a class="button button-icon icon ion-ios-close-empty button-left" ng-click="closeBedModal()"></a>
+        </div>
+        <h1 class="title">添加床位</h1>
+        <div class="buttons">
+            <button class="button button-right button-clear" ng-click="addBed()">确认新建</button>
+        </div>
+    </ion-header-bar>
+    <ion-content>
+        <h1 class="top-tip" ng-hide="showError">带*号为必填项</h1>
+        <h1 class="error-msg" ng-show="showError">新建失败!</h1>
+        <h2 class="small-title">楼名*</h2>
+        <div class="input-box">
+            <input type="text" placeholder="请输入楼名" ng-model="bedInfo.buildingText">
+        </div>
+        <h2 class="small-title">楼层*</h2>
+        <div class="input-box">
+            <input type="text" placeholder="请输入楼层" ng-model="bedInfo.floorNum">
+        </div>
+        <h2 class="small-title">房间名*</h2>
+        <div class="input-box">
+            <input type="text" placeholder="请输入房间名" ng-model="bedInfo.roomNum">
+        </div>
+        <h2 class="small-title">床位号*</h2>
+        <div class="input-box">
+            <input type="text" placeholder="请输入床位号" ng-model="bedInfo.bedNum">
+        </div>
+        <h2 class="small-title">床位入住性别*</h2>
+        <div class="button-box-gender">
+            <a class="btn" ng-class="{active:displayStates[0]}" ng-click="selectDetailsBed(2,0)">女</a>
+            <a class="btn" ng-class="{active:displayStates[1]}" ng-click="selectDetailsBed(1,1)">男</a>
+            <a class="btn" ng-class="{active:displayStates[2]}" ng-click="selectDetailsBed(3,2)">不限</a>
+        </div>
+        <h2 class="small-title">使用患者*</h2>
+        <div class="input-box" ng-class="{expand:showPatient}">
+            <input type="text" placeholder="请选择患者" ng-model="patInfo.pname" ng-class="{'border-none':showPatient}" readonly="true" ng-click="showPatientList()" ng-blur="hidePatientList()">
+            <i class="icon" ng-class="{'ion-ios-arrow-down':!showPatient,'ion-ios-arrow-up':showPatient}"></i>
+            <ion-scroll zooming="false" ng-show="showPatient" direction="y">
+                <ion-list>
+                    <ion-radio name="pat" ng-repeat="item in inhospitalPatList" icon="ion-checkmark-circled" ng-value="item.teamPid" ng-model="data.patId" ng-change="selectPatient(item)">{{item.pname}}</ion-radio>
+                </ion-list>
+            </ion-scroll>
+        </div>
+    </ion-content>
+</ion-modal-view>

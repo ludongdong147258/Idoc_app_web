@@ -1,0 +1,102 @@
+@charset "UTF-8";
+.patient-inhospital {
+    background: #fbfcfc;
+    .container {
+        padding: 0;
+        .top-nav {
+            margin-bottom: 12px;
+            display: flex;
+            > div:first-child {
+                border-right: 1px solid #e1e2e2;
+            }
+            > div {
+                flex: 1;
+                height: 44px;
+                background: #f3f3f3;
+                text-align: center;
+                .icon-box {
+                    overflow: hidden;
+                    height: 44px;
+                    line-height: 44px;
+                    img {
+                        margin-top: 10px;
+                        margin-right: 5px;
+                        width: 22px;
+                        height: 22px;
+                    }
+                    img,
+                    span {
+                        float: left;
+                    }
+                    span {
+                        font-size: 12px;
+                        color: #181f2a;
+                    }
+                }
+            }
+        }
+        .normal-nav {
+            margin-top: 16px;
+            margin-bottom: 0;
+            > div:first-child {
+                border: 0;
+                height: 39px;
+                text-align: left;
+                .icon-box {
+                    height: 39px;
+                    line-height: 39px;
+                    img {
+                        margin-top: 8px;
+                        margin-left: 12px;
+                    }
+                }
+            }
+        }
+        .small-title {
+            span {
+                font-weight: bold;
+                margin: 0 5px;
+            }
+        }
+        .input-box {
+            position: relative;
+            .input-date {
+                position: absolute;
+                right: 5px;
+                top:11px;
+                width: 22px;
+                height: 22px;
+            }
+        }
+        .doctor-box {
+            span {
+                em {
+                    font-size: 12px;
+                    margin-left: 12px;
+                }
+            }
+            .input-box {
+                position: relative;
+                margin-bottom: 10px;
+                .input-date {
+                    position: absolute;
+                    right: 5px;
+                    top:11px;
+                    width: 22px;
+                    height: 22px;
+                }
+            }
+        }
+        .bed-item {
+            .line {
+                border-bottom: 1px solid #e1e2e2;
+                margin: 0 12px;
+            }
+            &:last-child {
+                .line {
+                    margin: 0;
+                }
+            }
+        }
+    }
+}

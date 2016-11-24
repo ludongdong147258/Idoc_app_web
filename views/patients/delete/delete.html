@@ -1,0 +1,40 @@
+<ion-view title="删除病人" hide-nav-bar="true" class="inpatient-list patient-tag patient-delete">
+    <ion-header-bar align-title="center">
+        <div class="buttons">
+            <button class="button-clear button ion-back" ng-click="back()">
+                <i class="icon ion-ios-arrow-left"></i>
+            </button>
+        </div>
+        <h1 class="title">删除病人</h1>
+    </ion-header-bar>
+    <ion-content>
+        <div class="list">
+            <a class="item item-avatar" ng-repeat="item in deletePatientList">
+                <img ng-src="{{item.portraitUrl}}">
+                <h2>{{item.pname}}
+                    <span>{{item.gender}}</span>
+                    <span>{{item.age}}岁</span>
+                    <img src="../../../core/images/status-4@2x.png" ng-if="item.currentNodeType == 500"/>
+                    <img src="../../../core/images/status－2@2x.png" ng-if="item.currentNodeType != 500"/>
+                    <img src="../../../core/images/now－mz@2x.png" ng-if="item.currentNodeType == 100"/>
+                    <img src="../../../core/images/now－pd@2x.png" ng-if="item.currentNodeType == 200"/>
+                    <img src="../../../core/images/now－sq@2x.png" ng-if="item.currentNodeType == 300"/>
+                    <img src="../../../core/images/now－sz@2x.png" ng-if="item.currentNodeType == 400"/>
+                    <img src="../../../core/images/now－sh@2x.png" ng-if="item.currentNodeType == 500"/>
+                    <img src="../../../core/images/now－sf@2x.png" ng-if="item.currentNodeType == 600"/>
+                </h2>
+                <h4>{{item.nodeStateDesc}}</h4>
+                <p>{{item.bedInfo}}</p>
+                <p>手术日期:{{item.optTime | date:'yyyy-MM-dd'}}</p>
+                <p>诊断:{{item.diagnose}}</p>
+            </a>
+        </div>
+    </ion-content>
+    <ion-footer-bar>
+        <div class="row">
+            <div class="col footer-buttons">
+                <button class="button button-block" ng-click="deletePatients()">确定</button>
+            </div>
+        </div>
+    </ion-footer-bar>
+</ion-view>

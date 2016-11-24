@@ -1,0 +1,113 @@
+@charset 'utf-8';
+
+////
+/// Bar (Headers and Footers)
+///
+/// @group undefined
+/// @author hys
+////
+.bar {
+    padding: 0;
+
+    background-color: #2f4567!important;
+    .title {
+        .nav-bar-title {
+            color: $white;
+        }
+    }
+    .buttons.buttons-right {
+        top: 0;
+    }
+    .button.button-clear {
+        font-size: 13px;
+
+        min-height: 44px;
+
+        color: $white;
+        .icon {
+            &::before {
+                font-size: 22px;
+            }
+        }
+        &.ion-back {
+            left: 10px;
+
+            padding-right: 5px;
+            padding-left: 5px;
+
+            color: $white;
+            .ion-ios-arrow-left::before,
+            .ion-android-close::before {
+                line-height: 23px;
+
+                padding-left: 0;
+
+                vertical-align: middle;
+            }
+            i {
+                color: $white;
+            }
+            // 向左回退键
+            .ion-ios-arrow-left::before {
+                font-size: 15px;
+
+                content: '\f124';
+            }
+            // 关闭弹窗键
+            .ion-android-close::before {
+                font-size: 20px;
+            }
+        }
+        &.button-ok {
+            font-size: 14px;
+
+            top: 0;
+            right: 10px;
+            bottom: 0;
+
+            padding-right: 5px;
+            padding-left: 5px;
+            &[disabled] {
+                // color: $white;
+                // border-color: transparent !important;
+                // background-color: transparent !important;
+            }
+        }
+    }
+}
+
+// 无header页面的返回按钮
+.ion-back-no-header {
+    z-index: 10;
+
+    min-width: 50px;
+    padding-left: 8px !important;
+
+    color: $white !important;
+    .ion-chevron-left {
+        &::before {
+            font-size: 16px;
+            line-height: 25px;
+
+            width: 25px;
+            height: 25px;
+            padding-right: 2px;
+
+            vertical-align: middle;
+
+            border-radius: 50%;
+            background-color: rgba(0,0,0, .3);
+        }
+    }
+}
+
+.bottom-bar {
+    position: fixed;
+    z-index: 10;
+    bottom: 0;
+
+    width: 100%;
+    height: 50px;
+
+    text-align: center;
+}

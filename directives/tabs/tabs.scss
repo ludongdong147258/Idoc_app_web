@@ -1,0 +1,103 @@
+@charset 'utf-8';
+@import 'helpers/helpers';
+////
+/// 页签通用样式
+///
+/// @group undefined
+/// @author hys
+////
+// Tabs
+// -----------------------------------------------------------------------------
+.tabs-container {
+    position: absolute;
+    bottom: 0;
+
+    width: 100%;
+    height: 50px;
+
+    border-top: 1px solid $line-color;
+    .tabs-row {
+        font-size: 11px;
+        line-height: 60px;
+
+        position: absolute;
+        z-index: 9999;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        width: 100%;
+        height: 49px;
+
+        background-color: #fff;
+
+        justify-content: center;
+        .tab-item-col {
+            position: relative;
+
+            display: block;
+
+            width: 100%;
+
+            text-align: center;
+            p {
+                position: absolute;
+                top: 8px;
+                left: 0;
+
+                width: 100%;
+                margin-left: 50%;
+
+                transform: translateX(-50%);
+
+                color: $grey;
+                &.active {
+                    color: $primary-color;
+                }
+            }
+            .icon {
+                font-size: 11px;
+
+                display: block;
+
+                width: 22px;
+                height: 22px;
+                margin: 0 auto;
+                margin-top: 6px;
+                padding-top: 3px;
+
+                background-size: 22px 22px;
+                &.nav-1 {
+                    background-image: url('images/nav-1.png');
+                }
+                &.nav-1-active {
+                    background-image: url('images/nav-1-active.png');
+                }
+                &.nav-2 {
+                    background-image: url('images/nav-2.png');
+                }
+                &.nav-2-active {
+                    background-image: url('images/nav-2-active.png');
+                }
+                &.nav-3 {
+                    background-image: url('images/nav-3.png');
+                }
+                &.nav-3-active {
+                    background-image: url('images/nav-3-active.png');
+                }
+                &.nav-4 {
+                    background-image: url('images/nav-4.png');
+                }
+                &.nav-4-active {
+                    background-image: url('images/nav-4-active.png');
+                }
+                &.nav-5 {
+                    background-image: url('images/nav-5.png');
+                }
+                &.nav-5-active {
+                    background-image: url('images/nav-5-active.png');
+                }
+            }
+        }
+    }
+}

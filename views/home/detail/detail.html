@@ -1,0 +1,82 @@
+<ion-view class="home" view-title="首页" hide-nav-bar="true">
+    <ion-header-bar>
+        <h1 class="title">首页</h1>
+        <i class="icon ion-android-time bar-icon" ui-sref="dynamicList"></i>
+        <div class="tab clearfix">
+            <div>
+                <button class="btn" ng-class="{'active':displayState[0]}" ng-click="tabChange(0)">
+                    我的任务
+                </button>
+            </div>
+            <div>
+                <button class="btn" ng-click="tabChange(1)" ng-class="{'active':displayState[1]}">
+                    团队动态
+                </button>
+            </div>
+        </div>
+    </ion-header-bar>
+    <ion-content>
+        <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
+        <div ng-show="displayState[0]">
+            <div class="list">
+                <div ng-repeat="item in taskList" class="row-item">
+                    <a class="item item-avatar" ng-click="showAction(item)">
+                        <img src="{{item.portraitUrl}}">
+                        <h2>{{item.pname}}</h2>
+                        <p>{{item.bedText}}</p>
+                        <div class="item-arrow">
+                            <span class="circle" ng-show="item.msgcount">{{item.msgcount}}</span>
+                            <i class="icon ion-ios-arrow-down" ng-hide="item.isExpand"></i>
+                            <i class="icon ion-ios-arrow-up" ng-show="item.isExpand"></i>
+                        </div>
+                    </a>
+                    <div ng-show="item.isExpand" class="item item-avatar" style="padding-top:0;">
+                        <div class="row row-body" ng-repeat="subItem in item.actions">
+                            <div class="col row-action" ng-class="{'disabled-text':subItem.isComplete}">
+                                {{subItem.actionText}}
+                            </div>
+                            <div class="col col-desc">
+                                <span class="action-desc" ng-show="subItem.isComplete">{{subItem.actionDetails}}</span>
+                                <button class="button" ng-class="{'button-disabled':subItem.isComplete,'button-complete':!subItem.isComplete}" ng-disabled="subItem.isComplete" ng-click="finishiTask(subItem,$event,item)">{{subItem.actionName}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="" ng-show="displayState[1]">
+            <div class="list">
+                <a class="item item-avatar meeting" ng-repeat="item in teamDynamicList">
+                    <img src="{{item.headerUrl}}">
+                    <h1 class="team-name">{{item.teamName}}</h1>
+                    <div ng-repeat="subItem in item.dynamicList">
+                        <div class="row row-body row-border" ng-show="subItem.notifyType == 2 || subItem.notifyType == 3">
+                            <div class="col meeting-msg">
+                                {{subItem.content}}
+                                <h2 class="time">{{subItem.timeText}}</h2>
+                            </div>
+                        </div>
+                        <div class="row row-body" ng-class="{'row-border':!$last}" ng-show="subItem.notifyType == 1">
+                            <div class="col col-content">
+                                <span>{{subItem.title}}</span>
+                                <div class="meeting-content meeting-address clearfix">
+                                    <span>地点:</span>
+                                    <p>
+                                        {{subItem.address}}
+                                    </p>
+                                </div>
+                                <div class="meeting-content clearfix">
+                                    <span>内容:</span>
+                                    <p>{{subItem.content}}
+                                    </p>
+                                </div>
+                                <h2 class="time">{{subItem.timeText}}</h2>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </ion-content>
+    <xui-tabs active-tab-index="1"></xui-tabs>
+</ion-view>

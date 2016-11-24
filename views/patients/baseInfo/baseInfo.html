@@ -1,0 +1,115 @@
+<ion-view title="患者基本信息" hide-nav-bar="true" class="patient-baseInfo inpatient-list">
+    <ion-header-bar align-title="center">
+        <div class="buttons">
+            <button class="button-clear button ion-back" ng-click="back()">
+                <i class="icon ion-ios-arrow-left"></i>
+            </button>
+        </div>
+        <h1 class="title">患者基本信息</h1>
+    </ion-header-bar>
+    <ion-content>
+        <a class="item item-avatar">
+            <img ng-src="{{patientInfo.portraitUrl}}">
+            <h2>{{patientInfo.pname}}
+                <span>{{patientInfo.gender}}</span>
+                <span>{{patientInfo.age}}岁</span>
+                <img src="../../../core/images/status-4@2x.png" ng-if="patientInfo.currentNodeType == 500"/>
+                <img src="../../../core/images/status－2@2x.png" ng-if="patientInfo.currentNodeType != 500"/>
+                <img src="../../../core/images/now－mz@2x.png" ng-if="patientInfo.currentNodeType == 100"/>
+                <img src="../../../core/images/now－pd@2x.png" ng-if="patientInfo.currentNodeType == 200"/>
+                <img src="../../../core/images/now－sq@2x.png" ng-if="patientInfo.currentNodeType == 300"/>
+                <img src="../../../core/images/now－sz@2x.png" ng-if="patientInfo.currentNodeType == 400"/>
+                <img src="../../../core/images/now－sh@2x.png" ng-if="patientInfo.currentNodeType == 500"/>
+                <img src="../../../core/images/now－sf@2x.png" ng-if="patientInfo.currentNodeType == 600"/>
+            </h2>
+            <h4>{{patientInfo.processDetailInfo.nodeStateDesc}}</h4>
+            <p>登记号:{{patientInfo.registerNum}}</p>
+            <p>身份证:{{patientInfo.idCard}}</p>
+        </a>
+        <div class="bed-box">
+            <div class="left">
+                <img src="../../../core/images/icon-bed@2x.png"/>
+                <span>床位</span>
+            </div>
+            <div class="right">
+                <span>{{patientInfo.bedInfo}}</span>
+                <i class="icon ion-ios-arrow-right"></i>
+            </div>
+        </div>
+        <div class="bed-box normal-box">
+            <div class="left">
+                <img src="../../../core/images/liucheng@2x.png"/>
+                <span>详细流程</span>
+            </div>
+        </div>
+        <div class="desc-box">
+            <h1 class="line"></h1>
+            <span>{{patientInfo.processDetailInfo.detailName}}</span>
+        </div>
+        <div class="bed-box normal-box">
+            <div class="left">
+                <img src="../../../core/images/icon-doctor@2x.png"/>
+                <span>责任医生</span>
+            </div>
+            <div class="right" ng-click="openDoctorModal()">
+                <i class="icon ion-ios-arrow-right"></i>
+            </div>
+        </div>
+        <div class="desc-box no-border">
+            <h1 class="line"></h1>
+            <span>主任医师</span>
+            <span class="right">{{patientInfo.directorDname}}</span>
+        </div>
+        <div class="desc-box no-border">
+            <h1 class="line"></h1>
+            <span>主治医师</span>
+            <span class="right">{{patientInfo.attendingDname}}</span>
+        </div>
+        <div class="desc-box">
+            <h1 class="line"></h1>
+            <span>管床医生</span>
+            <span class="right">{{patientInfo.tubebedDname}}</span>
+        </div>
+        <div class="bed-box normal-box">
+            <div class="left">
+                <img src="../../../core/images/tag@2x.png"/>
+                <span>标签</span>
+            </div>
+            <div class="right" ng-click="goToPatientTag(teamPid)">
+                <i class="icon ion-ios-arrow-right"></i>
+            </div>
+        </div>
+        <div class="desc-box" style="height:auto;">
+            <h1 class="line"></h1>
+            <div class="tag-box">
+                <span ng-repeat="tagItem in patientInfo.tagList">{{tagItem.tagText}}</span>
+            </div>
+        </div>
+        <div class="bed-box normal-box">
+            <div class="left">
+                <img src="../../../core/images/icon-diagnose@2x.png"/>
+                <span>诊断信息</span>
+            </div>
+            <div class="right" ng-click="openDiagnoseModal()">
+                <i class="icon ion-ios-arrow-right"></i>
+            </div>
+        </div>
+        <div class="desc-box diagnose-box">
+            <h1 class="line"></h1>
+            <span>{{patientInfo.diagnose}}</span>
+        </div>
+        <div class="bed-box normal-box">
+            <div class="left">
+                <img src="../../../core/images/icon-mark@2x.png"/>
+                <span>备注</span>
+            </div>
+            <div class="right" ng-click="openRemarkModal()">
+                <i class="icon ion-ios-arrow-right"></i>
+            </div>
+        </div>
+        <div class="desc-box diagnose-box">
+            <h1 class="line"></h1>
+            <span>{{patientInfo.remark}}</span>
+        </div>
+    </ion-content>
+</ion-view>

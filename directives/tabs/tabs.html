@@ -1,0 +1,8 @@
+<div class="tabs-container">
+    <div class="xrow tabs-row">
+        <a class="xcol tab-item-col" ng-href="{{item.state}}" ng-repeat="item in tabs track by $index" data-nav-transition="{{item.navTransition}}">
+            <i class="icon" ng-class="$index + 1 == activeTabIndex ? item.iconOn : item.iconOff"></i>
+            <p ng-class="{'active': $index + 1 == activeTabIndex}">{{item.title}}</p>
+        </a>
+    </div>
+</div>

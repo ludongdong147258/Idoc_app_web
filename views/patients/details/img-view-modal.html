@@ -1,0 +1,16 @@
+<ion-modal-view class="patient-add patient-modal mobile-modal img-modal">
+    <ion-header-bar align-title="center">
+        <div class="buttons">
+            <a class="button button-icon icon ion-ios-close-empty button-left" ng-click="closeImgViewModal()"></a>
+        </div>
+        <h1 class="title">{{imgTitle}}</h1>
+        <div class="buttons">
+            <button class="button button-right button-clear" ng-click="closeImgViewModal()">关闭</button>
+        </div>
+    </ion-header-bar>
+    <ion-content>
+        <div class="img-container">
+            <img ng-src="{{targetImgUrl}}"/>
+        </div>
+    </ionic-content>
+</ion-modal-view>

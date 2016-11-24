@@ -1,0 +1,77 @@
+<ion-view class="patient-list inpatient-list" view-title="患者" hide-nav-bar="true">
+    <ion-header-bar align-title="center">
+        <i class="icon-search" ng-click="goToSearch()"></i>
+        <h1 class="title" ng-click="openTeamModal()">{{curTeam.v}}
+            <span class="sub-title">{{curProcess.v}}</span>
+        </h1>
+        <i class="icon-plus" ng-click="goToAddPatient()"></i>
+        <span class="span-edit" ng-click="showEditList()">{{editText}}</span>
+        <ion-scroll zooming="false" direction="x" style="height:28px;margin-top:58px;width:100%;">
+            <ul class="nav" ng-style="{width:(48*processNodeList.length)+(20*(processNodeList.length-1)+24)+px}">
+                <li ng-class="{active:displayStates[$index]}" ng-click="changeTab($index,item)" ng-repeat="item in processNodeList">{{item.linkName}}</li>
+            </ul>
+        </ion-scroll>
+    </ion-header-bar>
+    <ion-content ng-class="{mb:isEdit}">
+        <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
+        <div class="no-data" ng-show="!patientList.length">
+            <img src="../../../core/images/no-patient-data@2x.png" alt="没有患者数据"/>
+            <h1>没有患者数据</h1>
+            <h2>请在导航栏选择你要查看的患者</h2>
+            <h2>所在的团队、基本流程</h2>
+        </div>
+        <div class="list" ng-show="patientList.length > 0 && !isEdit">
+            <a class="item item-avatar" ng-repeat="item in patientList" ui-sref="patientInfo({teamPid:item.teamPid,state:'patients'})">
+                <img ng-src="{{item.portraitUrl}}">
+                <h2>{{item.pname}}
+                    <span>{{item.gender}}</span>
+                    <span>{{item.age}}岁</span>
+                    <img src="../../../core/images/status-4@2x.png" ng-if="item.currentNodeType == 500"/>
+                    <img src="../../../core/images/status－2@2x.png" ng-if="item.currentNodeType != 500"/>
+                    <img src="../../../core/images/now－mz@2x.png" ng-if="item.currentNodeType == 100"/>
+                    <img src="../../../core/images/now－pd@2x.png" ng-if="item.currentNodeType == 200"/>
+                    <img src="../../../core/images/now－sq@2x.png" ng-if="item.currentNodeType == 300"/>
+                    <img src="../../../core/images/now－sz@2x.png" ng-if="item.currentNodeType == 400"/>
+                    <img src="../../../core/images/now－sh@2x.png" ng-if="item.currentNodeType == 500"/>
+                    <img src="../../../core/images/now－sf@2x.png" ng-if="item.currentNodeType == 600"/>
+                </h2>
+                <h4>{{item.nodeStateDesc}}</h4>
+                <p>{{item.bedInfo}}</p>
+                <p>手术日期:{{item.optTime | date:'yyyy-MM-dd'}}</p>
+                <p>诊断:{{item.diagnose}}</p>
+            </a>
+        </div>
+        <ion-list ng-show="patientList.length > 0 && isEdit">
+            <ion-checkbox ng-repeat="item in patientList" ng-true-value="true" ng-change="addSelectedItem(item)" ng-false-value="false" ng-model="item.isSelected">
+                <a class="item item-avatar">
+                    <img ng-src="{{item.portraitUrl}}">
+                    <h2>{{item.pname}}
+                        <span>{{item.gender}}</span>
+                        <span>{{item.age}}岁</span>
+                    </h2>
+                    <p>{{item.bedInfo}}</p>
+                    <p>手术日期:{{item.optTime | date:'yyyy-MM-dd'}}</p>
+                    <p>诊断:{{item.diagnose}}</p>
+                </a>
+            </ion-checkbox>
+        </ion-list>
+        <ion-infinite-scroll ng-if="hasMoreData" on-infinite="loadMore()" distance="5%"></ion-infinite-scroll>
+        <time-picker id="timerPicker" ok-handler="callback(result)" hidetime="true" title="" yearstart="1990"
+                     time-picker-result="result" format="yyyy-MM-dd"></time-picker>
+        <num-picker id="numPicker" ok-handler="getSelectNum(numRes)" title="{{numTitle}}"
+                                              num-result="numRes"></num-picker>
+    </ion-content>
+    <ion-footer-bar ng-show="patientList.length > 0 && isEdit">
+        <ion-scroll zooming="false" direction="x">
+            <div class="footer-buttons" ng-style="{width:(74*processNodeList.length)+(5*(processNodeList.length-1)+400)+px}">
+                <button class="button">发消息</button>
+                <button class="button" ng-click="goToIngroup()">入组</button>
+                <button class="button" ng-click="goToPatientRound()">查房</button>
+                <button class="button" ng-repeat="item in processNodeList" ng-click="goToTargetUrl(item)">{{item.nodeName}}</button>
+                <button class="button">分享病例</button>
+                <button class="button" ng-click="goToDelete()">删除病人</button>
+            </div>
+        </ion-scroll>
+    </ion-footer-bar>
+    <xui-tabs active-tab-index="3"></xui-tabs>
+</ion-view>

@@ -1,0 +1,15 @@
+<ion-modal-view class="patient-add patient-modal mobile-modal img-modal">
+    <ion-header-bar align-title="center">
+        <div class="buttons">
+            <a class="button button-icon icon ion-ios-close-empty button-left" ng-click="closeNoticeViewModal()"></a>
+        </div>
+        <h1 class="title">{{noticeInfo.noticeTitle}}</h1>
+        <div class="buttons">
+            <button class="button button-right button-clear" ng-click="closeNoticeViewModal()">关闭</button>
+        </div>
+    </ion-header-bar>
+    <ion-content class="container">
+        <div ng-bind-html="noticeInfo.noticeContent">
+        </div>
+    </ionic-content>
+</ion-modal-view>

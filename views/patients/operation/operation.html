@@ -1,0 +1,73 @@
+<ion-view title="安排手术" hide-nav-bar="true" class="patient-add patient-operation patient-tag patient-inhospital">
+    <ion-header-bar align-title="center">
+        <div class="buttons">
+            <button class="button-clear button ion-back" ng-click="back()">
+                <i class="icon ion-ios-arrow-left"></i>
+            </button>
+        </div>
+        <h1 class="title">安排手术</h1>
+    </ion-header-bar>
+    <ion-content class="container">
+        <h2 class="small-title">请设置<span>手术环节</span>开始时间</h2>
+        <div class="input-box">
+            <input type="text" ng-model="optTime" readonly="readonly" placeholder="请选择手术环节开始时间"/>
+            <img src="../../../core/images/icon-date@2x.png" class="input-date" ng-click="selectDate()"/>
+        </div>
+        <h2 class="small-title">手术部位(多选)</h2>
+        <div class="input-box" ng-class="{expand:showOptSite}">
+            <input type="text" ng-class="{'border-none':showOptSite}" placeholder="请选择手术部位" readonly="true" ng-model="data.optSite" ng-click="showOptSiteList()">
+            <i class="icon" ng-class="{'ion-ios-arrow-down':!showOptSite,'ion-ios-arrow-up':showOptSite}"></i>
+            <ion-scroll zooming="false" direction="y" ng-show="showOptSite">
+                <ion-list>
+                    <ion-checkbox ng-model="item.data.k" ng-true-value="true" ng-change="selectOptSite(item)" ng-false-value="false" ng-repeat="item in optSiteList">{{item.v}}</ion-checkbox>
+                </ion-list>
+            </ion-scroll>
+        </div>
+        <h2 class="small-title">手术种类(多选)</h2>
+        <div class="input-box" ng-class="{expand:showOptType}">
+            <input type="text" ng-class="{'border-none':showOptType}" placeholder="请选择手术种类" readonly="true" ng-model="data.optType" ng-click="showOptTypeList()">
+            <i class="icon" ng-class="{'ion-ios-arrow-down':!showOptType,'ion-ios-arrow-up':showOptType}"></i>
+            <ion-scroll zooming="false" direction="y" ng-show="showOptType">
+                <ion-list>
+                    <ion-checkbox ng-model="item.data.k" ng-true-value="true" ng-change="selectOptType(item)" ng-false-value="false" ng-repeat="item in optTypeList">{{item.v}}</ion-checkbox>
+                </ion-list>
+            </ion-scroll>
+        </div>
+        <h2 class="small-title">材料名称(多选)</h2>
+        <div class="input-box" ng-class="{expand:showMt}">
+            <input type="text" placeholder="请选择材料名称" ng-model="data.optMt" ng-class="{'border-none':showMt}" readonly="true" ng-click="showOptMtList()">
+            <i class="icon" ng-class="{'ion-ios-arrow-down':!showMt,'ion-ios-arrow-up':showMt}"></i>
+            <ion-scroll zooming="false" ng-show="showMt" direction="y">
+                <ion-list>
+                    <ion-checkbox ng-model="item.data.k" ng-true-value="true" ng-change="selectOptMt(item)" ng-false-value="false" ng-repeat="item in optMtList">{{item.v}}</ion-checkbox>
+                </ion-list>
+            </ion-scroll>
+        </div>
+        <div ng-show="optMtNumList.length > 0">
+            <h2 class="small-title">选择所需数量</h2>
+            <ion-scroll zooming="false" direction="y">
+                <div class="mtnumber">
+                    <div class="number-item" ng-repeat="item in optMtNumList">
+                        <div class="left">
+                            {{item.v}}
+                        </div>
+                        <div class="right">
+                            <i class="icon ion-android-remove-circle" ng-click="addCount(item,-1)"></i>
+                            <span>{{item.mtlNum}}</span>
+                            <i class="icon ion-android-add-circle" ng-click="addCount(item,1)"></i>
+                        </div>
+                    </div>
+                </div>
+            </icon-scroll>
+        </div>
+        <time-picker id="patOperation" ok-handler="callback(result)" hidetime="true" title="请选择|手术环节|开始时间" yearstart="1990"
+                     time-picker-result="result" format="yyyy-MM-dd"></time-picker>
+    </ion-content>
+    <ion-footer-bar>
+        <div class="row">
+            <div class="col footer-buttons">
+                <button class="button button-block" ng-click="addOperation()">确定</button>
+            </div>
+        </div>
+    </ion-footer-bar>
+</ion-view>

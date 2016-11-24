@@ -1,0 +1,84 @@
+@charset 'utf-8';
+////
+/// 页签切换样式
+///
+/// @group undefined
+/// @author hys
+////
+.display-flex {
+    display:    -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+}
+
+%flex {
+       -moz-box-flex: 1;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+}
+
+// 默认tab-header
+//---------------------------------------------
+.tabs-header {
+    position: relative !important;
+
+    overflow: hidden;
+
+    height: 44px;
+    padding: 0 50px;
+
+    text-align: center;
+
+    background-color: #4d5768;
+
+    -webkit-box-align: center;
+    box-pack: center;
+            justify-content: center;
+    -webkit-justify-content: center;
+    @extend .display-flex;
+    .tab-btn {
+        font-size: 16px;
+        line-height: 44px;
+
+        display: -webkit-box;
+        display: flex;
+
+        width: 50%;
+
+        text-align: center;
+
+        color: #84898d;
+        background-color: transparent;
+
+        -webkit-box-align: center;
+                justify-content: center;
+        -webkit-justify-content: center;
+        @extend %flex;
+        span {
+            display: block;
+
+            width: 100%;
+
+            text-align: center;
+        }
+        &.active {
+            font-weight: bold;
+
+            color: #43cea9;
+            &::after {
+                position: absolute;
+                top: 41px;
+                left: 50%;
+
+                width: 76px;
+                height: 2px;
+
+                content: ' ';
+                transform: translateX(-50%);
+
+                background-color: #43cea9;
+            }
+        }
+    }
+}

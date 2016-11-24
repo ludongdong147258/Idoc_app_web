@@ -1,0 +1,135 @@
+<ion-view title="添加患者" hide-nav-bar="true" class="patient-add">
+    <ion-header-bar align-title="center">
+        <div class="buttons">
+            <button class="button-clear button ion-back" ng-click="back()">
+                <i class="icon ion-ios-arrow-left"></i>
+            </button>
+        </div>
+        <h1 class="title">添加患者</h1>
+    </ion-header-bar>
+    <ion-content>
+        <div class="button-box">
+            <button class="button button-block">
+                扫描二维码
+            </button>
+            <button class="button button-block" ng-click="openMobileModal()">
+                手机号添加
+            </button>
+            <button class="button button-block" ng-click="openModal()">
+                手动新建
+            </button>
+        </div>
+    </ion-content>
+    <script id="add-modal.html" type="text/ng-template">
+        <ion-modal-view class="patient-add patient-modal" hide-nav-bar="true">
+            <ion-header-bar align-title="center">
+              <div class="buttons">
+                  <a class="button button-icon icon ion-ios-close-empty button-left" ng-click="closeModal()"></a>
+              </div>
+              <h1 class="title">输入患者信息</h1>
+              <div class="buttons">
+                <button class="button button-right button-clear" ng-click="addPatient()">确认新建</button>
+              </div>
+            </ion-header-bar>
+            <ion-content>
+                <h1 class="top-tip" ng-hide="showError">带*号为必填项</h1>
+                <h1 class="error-msg" ng-show="showError">新建失败!</h1>
+                <h2 class="small-title">团队*</h2>
+                <div class="input-box" ng-class="{expand:showTeam}">
+                    <input type="text" placeholder="请选择团队" ng-model="team.v" ng-class="{'border-none':showTeam}" readonly="true" ng-click="showTeamList()" ng-blur="hideTeamList()">
+                    <i class="icon" ng-class="{'ion-ios-arrow-down':!showTeam,'ion-ios-arrow-up':showTeam}"></i>
+                    <ion-scroll zooming="false" ng-show="showTeam" direction="y">
+                        <ion-list>
+                            <ion-radio name="team" ng-repeat="item in teamList" icon="ion-checkmark-circled" ng-value="item.k" ng-model="data.teamId" ng-change="selectTeam(item)">{{item.v}}</ion-radio>
+                        </ion-list>
+                    </ion-scroll>
+                </div>
+                <h2 class="small-title">基本流程*</h2>
+                <div class="input-box" ng-class="{expand:showProcess}">
+                    <input type="text" placeholder="请选择基本流程" ng-model="process.v" ng-class="{'border-none':showProcess}" ng-blur="hideProcessList()" readonly="true" ng-click="showProcessList()">
+                    <i class="icon" ng-class="{'ion-ios-arrow-down':!showProcess,'ion-ios-arrow-up':showProcess}"></i>
+                    <ion-scroll zooming="false" ng-show="showProcess" direction="y">
+                        <ion-list>
+                            <ion-radio name="process" ng-repeat="item in processList" icon="ion-checkmark-circled" ng-value="item.k" ng-model="data.processId" ng-change="selectProcess(item)">{{item.v}}</ion-radio>
+                        </ion-list>
+                    </ion-scroll>
+                </div>
+                <h2 class="small-title">详细流程*</h2>
+                <div class="input-box" ng-class="{expand:showProcessDetails}">
+                    <input type="text" placeholder="请选择详细流程" ng-model="processDetails.v" ng-class="{'border-none':showProcessDetails}" ng-blur="hideProcessDetailsList()" readonly="true" ng-click="showProcessDetailsList()">
+                    <i class="icon" ng-class="{'ion-ios-arrow-down':!showProcessDetails,'ion-ios-arrow-up':showProcessDetails}"></i>
+                    <ion-scroll zooming="false" ng-show="showProcessDetails" direction="y">
+                        <ion-list>
+                            <ion-radio name="processDetails" ng-repeat="item in processDetailsList" icon="ion-checkmark-circled" ng-value="item.k" ng-model="data.processDetailsId" ng-change="selectProcessDetails(item)">{{item.v}}</ion-radio>
+                        </ion-list>
+                    </ion-scroll>
+                </div>
+                <h2 class="small-title">姓名*</h2>
+                <div class="input-box">
+                    <input type="text" placeholder="请输入姓名" ng-model="patientInfo.pname">
+                </div>
+                <div class="mutile-input">
+                    <div class="left">
+                        <h2 class="small-title">身份证号*</h2>
+                        <div class="input-box">
+                            <input type="text" placeholder="请输入身份证号" ng-blur="getAge()" ng-model="patientInfo.idCard" ng-class="{'error-border':showError}">
+                        </div>
+                        <h2 class="small-title" ng-class="{error:showError}" ng-show="showError">{{errorMsg}}</h2>
+                    </div>
+                    <div class="right">
+                        <h2 class="small-title">年龄</h2>
+                        <div class="input-box">
+                            <span class="input-span">{{patientInfo.age}}</span>
+                        </div>
+                    </div>
+                </div>
+                <h2 class="small-title">登记号*</h2>
+                <div class="input-box">
+                    <input type="text" placeholder="请输入登记号" ng-model="patientInfo.registerNum">
+                </div>
+                <h2 class="small-title">联系方式1*</h2>
+                <div class="input-box">
+                    <input type="text" placeholder="请输入联系方式" ng-model="patientInfo.phone">
+                </div>
+                <h2 class="small-title">联系方式2</h2>
+                <div class="input-box">
+                    <input type="text" placeholder="请输入联系方式" ng-model="patientInfo.phone2">
+                </div>
+                <h2 class="small-title">诊断信息*</h2>
+                <div class="input-box">
+                    <textarea name="name" rows="5" cols="40" placeholder="请输入诊断信息" ng-model="patientInfo.diagnose"></textarea>
+                </div>
+                <h2 class="small-title">主任医师*</h2>
+                <div class="input-box" ng-class="{expand:showZRDoctor}">
+                    <input type="text" placeholder="请选择主任医师" ng-model="directorDoctor.v" ng-class="{'border-none':showZRDoctor}" readonly="true" ng-click="showDirectorDoctorList()" ng-blur="hideDirectorDoctorList()">
+                    <i class="icon" ng-class="{'ion-ios-arrow-down':!showZRDoctor,'ion-ios-arrow-up':showZRDoctor}"></i>
+                    <ion-scroll zooming="false" ng-show="showZRDoctor" direction="y">
+                        <ion-list>
+                            <ion-radio name="director" ng-repeat="item in directorList" icon="ion-checkmark-circled" ng-value="item.k" ng-model="data.directorDoctorId" ng-change="selectDirectorDoctor(item)">{{item.v}}</ion-radio>
+                        </ion-list>
+                    </ion-scroll>
+                </div>
+                <h2 class="small-title">主治医师*</h2>
+                <div class="input-box" ng-class="{expand:showZZDoctor}">
+                    <input type="text" placeholder="请选择主治医师" ng-model="attendDoctor.v" ng-class="{'border-none':showZZDoctor}" readonly="true" ng-click="showAttendDoctorList()" ng-blur="hideAttendDoctorList()">
+                    <i class="icon" ng-class="{'ion-ios-arrow-down':!showZZDoctor,'ion-ios-arrow-up':showZZDoctor}"></i>
+                    <ion-scroll zooming="false" ng-show="showZZDoctor" direction="y">
+                        <ion-list>
+                            <ion-radio name="attend" ng-repeat="item in attendingList" icon="ion-checkmark-circled" ng-value="item.k" ng-model="data.attendDoctorId" ng-change="selectAttendDoctor(item)">{{item.v}}</ion-radio>
+                        </ion-list>
+                    </ion-scroll>
+                </div>
+                <h2 class="small-title">管床医生*</h2>
+                <div class="input-box" ng-class="{expand:showGCDoctor}">
+                    <input type="text" placeholder="请选择管床医生" ng-model="bedDoctor.v" ng-class="{'border-none':showGCDoctor}" readonly="true" ng-click="showBedDoctorList()" ng-blur="hideBedDoctorList()">
+                    <i class="icon" ng-class="{'ion-ios-arrow-down':!showGCDoctor,'ion-ios-arrow-up':showGCDoctor}"></i>
+                    <ion-scroll zooming="false" ng-show="showGCDoctor" direction="y">
+                        <ion-list>
+                            <ion-radio name="tubed" ng-repeat="item in tubebedList" icon="ion-checkmark-circled" ng-value="item.k" ng-model="data.tubedDoctorId" ng-change="selectBedDoctor(item)">{{item.v}}</ion-radio>
+                        </ion-list>
+                    </ion-scroll>
+                </div>
+            </ion-content>
+        </ion-modal-view>
+    </script>
+</ion-view>

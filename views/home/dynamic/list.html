@@ -1,0 +1,45 @@
+<ion-view title="团队患者动态" hide-nav-bar="true" class="dynamic">
+    <ion-header-bar align-title="center">
+        <div class="buttons">
+            <button class="button-clear button ion-back" ng-click="back()">
+                <i class="icon ion-ios-arrow-left"></i>
+            </button>
+        </div>
+        <h1 class="title">团队患者动态</h1>
+        <div class="buttons">
+            <button class="button button-clear" ng-click="selectDate()">
+                {{displayDate}}
+            </button>
+        </div>
+
+    </ion-header-bar>
+    <ion-content>
+        <data-date-slider-picker id="dateSlider" on-select-date="setDate" total-days="90" date-start="{{day.start}}" date-select-var="day.today" class="slider-picker">
+        </data-date-slider-picker>
+        <div class="item-box" ng-repeat="item in patientDynamicList">
+            <a class="item item-avatar" href="javascript:void(0);">
+                <img src="{{item.headerUrl}}">
+                <h2>{{item.teamName}}</h2>
+            </a>
+            <div class="row row-number">
+                <div class="col">
+                    入院人数
+                    <span ng-show="item.inHosCount > 0" ui-sref="inpatientList({teamId:item.teamId,type:1,dynamicTime:timeStamp})">{{item.inHosCount}}</span>
+                    <span ng-show="item.inHosCount == 0">{{item.inHosCount}}</span>
+                </div>
+                <div class="col">
+                    手术人数
+                    <span ng-show="item.optCount > 0" ui-sref="inpatientList({teamId:item.teamId,type:2,dynamicTime:timeStamp})">{{item.optCount}}</span>
+                    <span ng-show="item.optCount == 0">{{item.optCount}}</span>
+                </div>
+                <div class="col">
+                    出院人数
+                    <span ng-show="item.leaveCount > 0" ui-sref="inpatientList({teamId:item.teamId,type:3,dynamicTime:timeStamp})">{{item.leaveCount}}</span>
+                    <span ng-show="item.leaveCount == 0">{{item.leaveCount}}</span>
+                </div>
+            </div>
+        </div>
+        <time-picker hidedate="true" id="patTimerPicker" ok-handler="callback(result)" hidetime="true" title="" yearstart="1990"
+                     time-picker-result="result" format="yyyy-MM-dd"></time-picker>
+    </ion-content>
+</ion-view>

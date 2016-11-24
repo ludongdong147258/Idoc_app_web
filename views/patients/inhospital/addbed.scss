@@ -1,0 +1,35 @@
+@charset "UTF-8";
+.addbed-modal {
+    .button-box-gender {
+        padding: 0 12px;
+        margin-bottom: 12px;
+        display: flex;
+        > .btn {
+            background: #fff;
+            flex:1;
+            font-size: 14px;
+            height: 44px;
+            line-height: 44px;
+            text-align: center;
+            border: 1px solid #43cea9;
+            color: #84898d;
+            &:first-child {
+                border-top-left-radius: 6px;
+                border-bottom-left-radius: 6px;
+            }
+            &:last-child {
+                border-top-right-radius: 6px;
+                border-bottom-right-radius: 6px;
+            }
+            &:nth-child(2) {
+                border-left: none;
+                border-right: none;
+            }
+            &.active {
+                background: #43cea9;
+                color: #fff;
+                border: 1px solid #43cea9;
+            }
+        }
+    }
+}

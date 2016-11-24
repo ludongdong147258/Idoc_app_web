@@ -1,0 +1,104 @@
+<ion-view title="搜索" hide-nav-bar="true" class="patient-search patient-add inpatient-list">
+    <ion-header-bar align-title="center">
+        <div class="buttons">
+            <button class="button-clear button ion-back" ng-click="back()">
+                <i class="icon ion-ios-arrow-left"></i>
+            </button>
+        </div>
+        <h1 class="title">搜索</h1>
+    </ion-header-bar>
+    <ion-content>
+        <h1 class="search-title">请选择搜索条件</h1>
+        <div class="search-buttons">
+            <a class="btn" ng-class="{active:displayStates[0]}" ng-click="changeTab(0)">姓名</a>
+            <a class="btn" ng-class="{active:displayStates[1]}" ng-click="changeTab(1)">登记号</a>
+            <a class="btn" ng-class="{active:displayStates[2]}" ng-click="changeTab(2)">身份证</a>
+            <a class="btn" ng-class="{active:displayStates[3]}" ng-click="changeTab(3)">电话号码</a>
+            <a class="btn" ng-class="{active:displayStates[4]}" ng-click="changeTab(4)">手术日期</a>
+        </div>
+        <div ng-show="displayStates[0]">
+            <h1 class="search-title">请输入搜索内容</h1>
+            <div class="input-box">
+                <input type="text" placeholder="请输入搜索内容" ng-model="searchInfo.name">
+            </div>
+            <div class="button-box">
+                <button class="button button-block" ng-click="searchPatientList(searchInfo.name)">
+                    搜索
+                </button>
+            </div>
+        </div>
+        <div ng-show="displayStates[1]">
+            <h1 class="search-title">请输入搜索内容</h1>
+            <div class="input-box">
+                <input type="text" placeholder="请输入搜索内容" ng-model="searchInfo.registerNum">
+            </div>
+            <div class="button-box">
+                <button class="button button-block" ng-click="searchPatientList(searchInfo.registerNum)">
+                    搜索
+                </button>
+            </div>
+        </div>
+        <div ng-show="displayStates[2]">
+            <h1 class="search-title">请输入搜索内容</h1>
+            <div class="input-box">
+                <input type="text" placeholder="请输入搜索内容" ng-model="searchInfo.IDNo">
+            </div>
+            <div class="button-box">
+                <button class="button button-block" ng-click="searchPatientList(searchInfo.IDNo)">
+                    搜索
+                </button>
+            </div>
+        </div>
+        <div ng-show="displayStates[3]">
+            <h1 class="search-title">请输入搜索内容</h1>
+            <div class="input-box">
+                <input type="text" placeholder="请输入搜索内容" ng-model="searchInfo.phone">
+            </div>
+            <div class="button-box">
+                <button class="button button-block" ng-click="searchPatientList(searchInfo.phone)">
+                    搜索
+                </button>
+            </div>
+        </div>
+        <div ng-show="displayStates[4]">
+            <h1 class="search-title">请选择开始时间</h1>
+            <div class="input-box mb20">
+                <input type="text" ng-model="searchInfo.startDate" readonly="readonly" placeholder="请选择开始时间">
+                <img src="../../../core/images/icon-date@2x.png"  class="input-date" ng-click="selectDate(1)"/>
+            </div>
+            <h1 class="search-title">请选择结束时间</h1>
+            <div class="input-box">
+                <input type="text" ng-model="searchInfo.endDate" readonly="readonly" placeholder="请选择结束时间">
+                <img src="../../../core/images/icon-date@2x.png" class="input-date" ng-click="selectDate(2)"/>
+            </div>
+            <div class="button-box">
+                <button class="button button-block" ng-click="searchPatientList(searchInfo.startDate,searchInfo.endDate)">
+                    搜索
+                </button>
+            </div>
+        </div>
+        <div class="list">
+            <a class="item item-avatar" ng-repeat="item in patientList" ng-click="goToPatientInfo(item)">
+                <img ng-src="{{item.portraitUrl}}">
+                <h2>{{item.pname}}<span>{{item.gender}}</span><span>{{item.age}}岁</span>
+                    <img src="../../../core/images/status-4@2x.png" ng-if="item.currentNodeType == 500"/>
+                    <img src="../../../core/images/status－2@2x.png" ng-if="item.currentNodeType != 500"/>
+                    <img src="../../../core/images/now－mz@2x.png" ng-if="item.currentNodeType == 100"/>
+                    <img src="../../../core/images/now－pd@2x.png" ng-if="item.currentNodeType == 200"/>
+                    <img src="../../../core/images/now－sq@2x.png" ng-if="item.currentNodeType == 300"/>
+                    <img src="../../../core/images/now－sz@2x.png" ng-if="item.currentNodeType == 400"/>
+                    <img src="../../../core/images/now－sh@2x.png" ng-if="item.currentNodeType == 500"/>
+                    <img src="../../../core/images/now－sf@2x.png" ng-if="item.currentNodeType == 600"/>
+                </h2>
+                <h4>{{item.nodeStateDesc}}</h4>
+                <p>{{item.bedInfo}}</p>
+                <p>手术日期:{{item.optTime | date:'yyyy-MM-dd'}}</p>
+                <p>诊断:{{item.diagnose}}</p>
+            </a>
+        </div>
+        <ion-infinite-scroll ng-if="hasMoreData" on-infinite="loadMore()" distance="5%">
+        </ion-infinite-scroll>
+        <time-picker id="searchTimerPicker" ok-handler="callback(result)" hidetime="true" title="" yearstart="1990"
+                     time-picker-result="result" format="yyyy-MM-dd"></time-picker>
+    </ion-content>
+</ion-view>

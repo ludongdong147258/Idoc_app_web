@@ -1,0 +1,139 @@
+@charset 'utf-8';
+// 模态窗从右侧进入左侧
+.slide-in-right {
+    @include translate3d(100%, 0, 0);
+}
+
+.slide-in-right.ng-enter,
+.slide-in-right > .ng-enter {
+    @include transition(all cubic-bezier(.1, .7, .1, 1) 400ms);
+}
+
+.slide-in-right.ng-enter-active,
+.slide-in-right > .ng-enter-active {
+    @include translate3d(0, 0, 0);
+}
+
+.slide-in-right.ng-leave,
+.slide-in-right > .ng-leave {
+    @include transition(all ease-in-out 250ms);
+}
+
+// 模态窗从右侧进入左侧
+.slide-in-right-important {
+    @include translate3d(100%, 0, 0);
+}
+
+.slide-in-right-important.ng-enter,
+.slide-in-right-important > .ng-enter {
+    @include transition(all cubic-bezier(.1, .7, .1, 1) 400ms);
+}
+
+.slide-in-right-important.ng-enter-active,
+.slide-in-right-important > .ng-enter-active {
+    @include translate3d(0, 0, 0);
+}
+
+.slide-in-right-important.ng-leave,
+.slide-in-right-important > .ng-leave {
+    @include transition(all ease-in-out 250ms);
+}
+
+.list-animation {
+    .item.ng-enter,
+    .item.ng-leave,
+    .item.ng-move {
+        -webkit-transition: .5s linear all;
+           -moz-transition: .5s linear all;
+             -o-transition: .5s linear all;
+                transition: .5s linear all;
+    }
+    .item.ng-enter,
+    .item.ng-move {
+        overflow: hidden;
+
+        height: 0;
+
+        opacity: 0;
+    }
+    .item.ng-move.ng-move-active,
+    .item.ng-enter.ng-enter-active {
+        height: 47px;
+
+        opacity: 1;
+    }
+    .item.ng-leave {
+        overflow: hidden;
+
+        opacity: 1;
+    }
+    .item.ng-leave.ng-leave-active {
+        height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+
+        opacity: 0;
+        border-top: none;
+    }
+}
+
+// 列表项上移效果
+// -----------------------------------------------------------------------------
+@-webkit-keyframes item-move-top {
+    0% {
+        transform: translateY(15px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.item-move-top {
+    transform: translateY(0);
+    animation: item-move-top .3s linear .1s backwards;
+
+    opacity: 1;
+}
+
+// 闪闪的蒙层
+// -----------------------------------------------------------------------------
+@-webkit-keyframes buling-move-left {
+    0% {
+        left: -90px;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+.buling {
+    position: absolute;
+    z-index: 9999;
+    top: 0;
+    left: -80px;
+
+    overflow: hidden;
+
+    width: 80px;
+    height: 100%;
+
+    transform: skewX(-25deg);
+    animation: buling-move-left 1s linear 3s infinite;
+    // background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgba(255, 255, 255, 0)), color-stop(1, rgba(6, 33, 87, .5)));
+    // background-image: -webkit-linear-gradient(left, rgba(255,255,255,0) 0, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
+
+    background-image: -webkit-gradient(linear, left top, right top, color-stop(0, rgba(255,255,255,0)), color-stop(.5, rgba(255,255,255,.2)), color-stop(1, rgba(255,255,255,0)));
+}
+
+// 忽明忽暗
+// -----------------------------------------------------------------------------
+@-webkit-keyframes flicker {
+    0%,
+    100% {
+        opacity: .4;
+    }
+    50%,
+    70% {
+        opacity: 1;
+    }
+}

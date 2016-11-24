@@ -1,0 +1,88 @@
+@charset "utf-8";
+
+////
+/// 变量配置
+/// 用于颜色，文本，尺寸等内容的配置。
+///
+/// @group API
+/// @author hys
+////
+
+// 颜色表
+// -----------------------------------------------------------------------------
+
+/// 黑色
+$black:                           #000                               !default;
+/// 深灰色
+$grey-dark:                       #181f12                            !default;
+/// 灰色
+$grey:                            #84898d                            !default;
+/// 白色
+$white:                           #fff                               !default;
+
+/// 红色
+$red:                             #ff5a60                            !default;
+/// 浅红色
+$red-light:                       #ffecec                            !default;
+/// 黄色调
+$yellow:                          #fe7e01                            !default;
+/// 浅黄色
+$yellow-light:                    #fefaef                            !default;
+/// 蓝色调
+$blue:                            #64a4e4                            !default;
+/// 浅蓝色
+$blue-light:                      #11c1f3                            !default;
+/// 绿色调
+$green:                           #43cea9                            !default;
+/// 浅绿色
+$green-light:                     #dff0d8                            !default;
+/// 紫色
+$purple:                          #886aea                            !default;
+/// 浅紫色
+$purple-light:                    #BB9DEC                            !default;
+
+// 项目配色
+// -----------------------------------------------------------------------------
+
+/// 主风格色
+$primary-color:                   #43cea9                            !default;
+
+/// 主风格背景色
+$primary-bg-color:                #fff                               !default;
+
+/// 线条颜色，一般作为分割线，文本框，模块等控件的无状态时的边框颜色
+$line-color:                      #e1e2e2                            !default;
+
+// 文本颜色
+// -----------------------------------------------------------------------------
+
+/// 默认字体颜色
+$font-color-base:               #181f2a                              !default;
+
+//  文字
+// -----------------------------------------------------------------------------
+
+/// 默认字体集
+$font-family-base:              Verdana,Arial,SimSun,Microsoft Yahei !default;
+
+/// 强调文字字体集
+$font-family-loud:              'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', tahoma, arial, simhei, Verdana, SimSun !default;
+
+/// 默认文字大小
+$font-size-base:                14px                                 !default;
+
+/// >320宽的字号
+$font-size-base-large:          15px                                 !default;
+
+/// 较大文字大小
+$font-size-large:               20px                                 !default;
+/// 较小文字大小
+$font-size-small:               13px                                 !default;
+
+/// 默认文字行高
+$line-height-base:              1.5                                  !default;
+/// 较大文字行高
+$line-height-large:             1.6                                  !default;
+/// 较小文字行高
+$line-height-small:             1.3                                  !default;
+

@@ -1,0 +1,16 @@
+<ion-modal-view class="patient-add patient-modal mobile-modal img-modal">
+    <ion-header-bar align-title="center">
+        <div class="buttons">
+            <a class="button button-icon icon ion-ios-close-empty button-left" ng-click="closeVideoViewModal()"></a>
+        </div>
+        <h1 class="title">{{videoTitle}}</h1>
+        <div class="buttons">
+            <button class="button button-right button-clear" ng-click="closeVideoViewModal()">关闭</button>
+        </div>
+    </ion-header-bar>
+    <ion-content>
+        <video width="352" height="264" controls autobuffer>
+            <source src="{{targetVideoUrl}}" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'></source>
+        </video>
+    </ionic-content>
+</ion-modal-view>

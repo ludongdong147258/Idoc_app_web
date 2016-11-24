@@ -1,0 +1,19 @@
+<ion-modal-view class="patient-add patient-modal mobile-modal img-modal">
+    <ion-header-bar align-title="center">
+        <div class="buttons">
+            <a class="button button-icon icon ion-ios-close-empty button-left" ng-click="closeImgModal()"></a>
+        </div>
+        <h1 class="title">图片</h1>
+        <div class="buttons">
+            <button class="button button-right button-clear" ng-click="uploadImg()">上传</button>
+        </div>
+    </ion-header-bar>
+    <ion-content class="container">
+        <div class="img-box">
+            <img ng-src="{{item}}" ng-repeat="item in image_list track by $index" ng-class="{mr:(($index+1)%3 == 0)}"/>
+            <div class="img-add" ng-click="pickImage(1)">
+                <img src="../../../core/images/icon-add@2x.png"/>
+            </div>
+        </div>
+    </ionic-content>
+</ion-modal-view>

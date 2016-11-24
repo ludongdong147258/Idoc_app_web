@@ -1,0 +1,1 @@
+__DEV__&&(window.AGL.appConfig={service:"http://idoc.12sleep.cn/index.php/doctor/",domain:"http://idoc.12sleep.cn",staticDomain:"http://idoc.12sleep.cn",wechatAppId:""}),__TEST__&&(window.AGL.appConfig={service:"http://idoc.12sleep.cn/index.php/doctor/",domain:"http://idoc.12sleep.cn",staticDomain:"http://idoc.12sleep.cn",wechatAppId:""}),__ONLINE__&&(window.AGL.appConfig={});

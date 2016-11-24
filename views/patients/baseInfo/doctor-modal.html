@@ -1,0 +1,49 @@
+<ion-modal-view class="patient-modal patient-add doctor-modal">
+    <ion-header-bar align-title="center">
+        <div class="buttons">
+            <a class="button button-icon icon ion-ios-close-empty button-left" ng-click="closeDoctorModal()"></a>
+        </div>
+        <h1 class="title">责任医生</h1>
+        <div class="buttons">
+            <button class="button button-right button-clear" ng-click="saveDoctorInfo()">保存</button>
+        </div>
+    </ion-header-bar>
+    <ion-content>
+        <div class="doctor-box">
+            <span>主任医师</span>
+            <div class="input-box" ng-class="{expand:showZRDoctor}">
+                <input type="text" placeholder="请选择主任医师" ng-model="directorDoctor.v" ng-class="{'border-none':showZRDoctor}" readonly="true" ng-click="showDirectorDoctorList()" ng-blur="changeZRState()">
+                <i class="icon" ng-class="{'ion-ios-arrow-down':!showZRDoctor,'ion-ios-arrow-up':showZRDoctor}"></i>
+                <ion-scroll zooming="false" ng-show="showZRDoctor" direction="y">
+                    <ion-list>
+                        <ion-radio name="director" ng-repeat="item in directorList" icon="ion-checkmark-circled" ng-value="item.k" ng-model="data.directorDoctorId" ng-change="selectDirectorDoctor(item)">{{item.v}}</ion-radio>
+                    </ion-list>
+                </ion-scroll>
+            </div>
+        </div>
+        <div class="doctor-box">
+            <span>主治医师</span>
+            <div class="input-box" ng-class="{expand:showZZDoctor}">
+                <input type="text" placeholder="请选择主治医师" ng-model="attendDoctor.v" ng-class="{'border-none':showZZDoctor}" readonly="true" ng-click="showAttendDoctorList()" ng-blur="changeAttendState()">
+                <i class="icon" ng-class="{'ion-ios-arrow-down':!showZZDoctor,'ion-ios-arrow-up':showZZDoctor}"></i>
+                <ion-scroll zooming="false" ng-show="showZZDoctor" direction="y">
+                    <ion-list>
+                        <ion-radio name="attend" ng-repeat="item in attendingList" icon="ion-checkmark-circled" ng-value="item.k" ng-model="data.attendDoctorId" ng-change="selectAttendDoctor(item)">{{item.v}}</ion-radio>
+                    </ion-list>
+                </ion-scroll>
+            </div>
+        </div>
+        <div class="doctor-box">
+            <span>管床医生</span>
+            <div class="input-box" ng-class="{expand:showGCDoctor}">
+                <input type="text" placeholder="请选择管床医生" ng-model="bedDoctor.v" ng-class="{'border-none':showGCDoctor}" readonly="true" ng-click="showBedDoctorList()" ng-blur="changeBedDState()">
+                <i class="icon" ng-class="{'ion-ios-arrow-down':!showGCDoctor,'ion-ios-arrow-up':showGCDoctor}"></i>
+                <ion-scroll zooming="false" ng-show="showGCDoctor" direction="y">
+                    <ion-list>
+                        <ion-radio name="tubed" ng-repeat="tubedItem in tubebedList" icon="ion-checkmark-circled" ng-value="tubedItem.k" ng-model="data.tubedDoctorId" ng-change="selectBedDoctor(tubedItem)">{{tubedItem.v}}</ion-radio>
+                    </ion-list>
+                </ion-scroll>
+            </div>
+        </div>
+    </ionic-content>
+</ion-modal-view>

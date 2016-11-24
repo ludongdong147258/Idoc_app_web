@@ -1,0 +1,451 @@
+@charset 'utf-8';
+////
+/// 原子类型样式
+///
+/// 使用方法：不能重新定义/重置本文件内样式(除了项目差异)
+///
+/// @group undefined
+/// @author hys
+////
+// single attribute
+// -----------------------------------------------------------------------------
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.ng-hide {
+    display: none !important;
+}
+
+.ng-show {
+    display: block !important;
+}
+
+.hidden {
+    visibility: hidden;
+
+    height: 0;
+}
+
+.visible {
+    visibility: visible;
+}
+
+.rel {
+    position: relative;
+}
+
+.abs {
+    position: absolute;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.line-through {
+    text-decoration: line-through;
+}
+
+// clear float
+// -----------------------------------------------------------------------------
+.clear {
+    font-size: 0;
+
+    clear: both;
+    overflow: hidden;
+
+    height: 0;
+}
+
+.clearfix:after {
+    display: block;
+    clear: both;
+
+    height: 0;
+
+    content: '\0020';
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+// 多行显示
+// -----------------------------------------------------------------------------
+.auto-line {
+    white-space: normal !important;
+}
+
+// 文本限制显示
+// -----------------------------------------------------------------------------
+.one-line,
+.two-line,
+.three-line {
+    display: -webkit-box;
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+    word-break: break-word;
+
+    -webkit-box-orient: vertical;
+}
+
+// 单行显示
+// -----------------------------------------------------------------------------
+.one-line {
+    -webkit-line-clamp: 1;
+}
+
+// 2行显示
+// -----------------------------------------------------------------------------
+.two-line {
+    -webkit-line-clamp: 2;
+}
+
+// 3行显示
+// -----------------------------------------------------------------------------
+.three-line {
+    -webkit-line-clamp: 3;
+}
+
+// 栅格重置 padding
+// -----------------------------------------------------------------------------
+.xrow,
+.xcol {
+    display:    -moz-box;
+    display:      -o-box;
+    display: -ms-flexbox;
+    display: -webkit-box;
+}
+
+.xcol {
+       -moz-box-flex: 1;
+    /* Firefox */
+    -webkit-box-flex: 1;
+    /* Safari and Chrome */
+    -ms-flex: 1;
+    /* Internet Explorer 10 */
+}
+
+// 间距
+.mt12 {
+    margin-top: 12px;
+}
+
+.mr12 {
+    margin-right: 12px;
+}
+
+.mb12 {
+    margin-bottom: 12px;
+}
+
+.ml12 {
+    margin-left: 12px;
+}
+
+// 不需要滚动条的视图，若视图内容区可能超过一屏请果断使用 <ion-content> 指令
+// -----------------------------------------------------------------------------
+.has-header {
+    top: 44px;
+}
+
+.page {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    overflow: hidden;
+    &.has-header {
+        @extend .has-header;
+    }
+    &.has-tabs {
+        @extend .has-tabs;
+    }
+}
+
+// 数据空
+// -----------------------------------------------------------------------------
+.empty {
+    font-size: 12px;
+    line-height: 26px;
+
+    position: absolute;
+    z-index: 999;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+    text-align: center;
+
+    color: #999;
+    &::before {
+        display: block;
+
+        margin-top: 110px;
+
+        content: '很抱歉，没有相关搜索结果';
+    }
+}
+
+// 页面基础背景色
+// -----------------------------------------------------------------------------
+.page,
+.pane,
+.modal {
+    background-color: $primary-bg-color;
+    &.background-white {
+        background-color: #fff;
+    }
+}
+
+// 自定义视图遮罩层
+// -----------------------------------------------------------------------------
+.backdrop-custom {
+    position: absolute;
+    z-index: 99;
+
+    width: 100%;
+    height: 100%;
+
+    text-align: center;
+
+    opacity: .7;
+    color: #fff;
+    background-color: #000;
+}
+
+// 富文本编辑器
+// -----------------------------------------------------------------------------
+.fckeditor {
+    p {
+        font-size: 16px;
+        line-height: 24px;
+
+        margin-bottom: 13px;
+
+        text-align: justify;
+        text-justify: inter-ideograph;
+        letter-spacing: .5px;
+        word-wrap: break-word;
+
+        color: #4c4c4c;
+    }
+    img {
+        width: 100%;
+        margin-top: 5px;
+        margin-bottom: 12px;
+    }
+    h1 {
+        font-size: 16px;
+    }
+    // 各种规则条款样式
+    &.rule {
+        font-size: 16px;
+        line-height: 24px;
+
+        padding: 15px;
+
+        color: #4c4c4c;
+        p {
+            font-size: 12px;
+            line-height: 16px;
+
+            margin-bottom: 15px;
+
+            text-indent: 2em;
+            letter-spacing: .5px;
+            &.underline {
+                font-weight: bold;
+
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+// 消息数字提示
+// -----------------------------------------------------------------------------
+.badge {
+    font-family: 'arial';
+    font-size: 8px;
+    line-height: 16px;
+
+    position: absolute;
+
+    min-width: 14px;
+    height: 14px;
+    padding: 0 3px;
+
+    color: #fff;
+    background-color: $red;
+}
+
+// 文字基本颜色
+// -----------------------------------------------------------------------------
+.primary-color {
+    color: $primary-color;
+}
+
+// 文字大小
+// -----------------------------------------------------------------------------
+.f-s-10 {
+    font-size: 10px;
+}
+
+.f-s-12 {
+    font-size: 12px;
+}
+
+.f-s-14 {
+    font-size: 14px;
+}
+
+.f-s-16 {
+    font-size: 16px;
+}
+
+.f-s-18 {
+    font-size: 18px;
+}
+
+.f-s-20 {
+    font-size: 20px;
+}
+
+// 细边框
+// -----------------------------------------------------------------------------
+.border {
+    @include border('.border', 1, 1, 1, 1);
+}
+
+.border-t {
+    @include border('.border-t', 1, 0, 0, 0);
+}
+
+.border-r {
+    @include border('.border-r', 0, 1, 0, 0);
+}
+
+.border-b {
+    @include border('.border-b', 0, 0, 1, 0);
+}
+
+.border-l {
+    @include border('.border-l', 0, 0, 0, 1);
+}
+
+.border-h {
+    @include border('.border-h', 1, 0, 1, 0);
+}
+
+.border-v {
+    @include border('.border-v', 0, 1, 0, 1);
+}
+
+// ios7以上系统支持0.5border
+.ios-gt-7 {
+    .border,
+    .border-t,
+    .border-r,
+    .border-b,
+    .border-l,
+    .border-h,
+    .border-v {
+        border-image: none;
+    }
+    .border {
+        border-width: .5px;
+    }
+    .border-t {
+        border-top-width: .5px;
+    }
+    .border-r {
+        border-right-width: .5px;
+    }
+    .border-b {
+        border-bottom-width: .5px;
+    }
+    .border-l {
+        border-left-width: .5px;
+    }
+    .border-h {
+        border-top-width: .5px;
+        border-bottom-width: .5px;
+    }
+    .border-v {
+        border-right-width: .5px;
+        border-left-width: .5px;
+    }
+}
+
+// 文字字体
+// -----------------------------------------------------------------------------
+.arial {
+    font-family: arial;
+}
+
+// 向上三角形
+.arrow-up::before {
+    position: absolute;
+    top: -8px;
+    right: 16px;
+
+    width: 0;
+    height: 0;
+
+    content: ' ';
+
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #fff;
+    border-left: 10px solid transparent;
+}
+
+// 向右三角形
+.arrow-right::before {
+    position: absolute;
+    top: -8px;
+    right: 16px;
+
+    width: 0;
+    height: 0;
+
+    content: ' ';
+
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid #fff;
+}
+
+// 单选按钮
+.ion-ios-circle-outline,
+.ion-ios-checkmark {
+    font-size: 25px;
+    line-height: 25px;
+
+    position: absolute;
+    top: 10px;
+    right: 12px;
+
+    width: 25px;
+    height: 25px;
+
+    text-align: center;
+
+    color: $primary-color;
+}

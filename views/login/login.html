@@ -1,0 +1,19 @@
+<ion-view class="account login" view-title="登录" hide-nav-bar="true">
+    <ion-content>
+        <form name="form">
+            <div>
+                <div class="logo"></div>
+            </div>
+            <div class="input-wrapper login-mobile">
+                <input name="loginName" ng-model="data.loginName" placeholder="手机号" type="tel" required />
+                <!-- <div class="button button-clean btn-send" ng-click="sendMessage(1002)" ng-disabled="sendMessageBtn.disabled || form.loginName.$invalid">{{sendMessageBtn.text}}</div> -->
+            </div>
+            <div class="input-wrapper login-code">
+                <input name="password" ng-model="data.password" placeholder="密码" type="password" required/>
+            </div>
+            <div class="button button-confirm button-outline" ng-click="login()" ng-disabled="submitBtn.disabled || form.$invalid">{{submitBtn.text}}</div>
+        </form>
+        <p class="forget" ng-click="forgetPasswordModal.show()">忘记密码？</p>
+    </ion-content>
+    <p class="register" ng-click="registerModal.show()">还没有账号？ 注册</p>
+</ion-view>

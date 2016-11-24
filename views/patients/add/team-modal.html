@@ -1,0 +1,43 @@
+<ion-modal-view class="patient-add patient-modal" hide-nav-bar="true">
+    <ion-header-bar align-title="center">
+      <div class="buttons">
+          <a class="button button-icon icon ion-ios-close-empty button-left" ng-click="closeTeamModal()"></a>
+      </div>
+      <h1 class="title">选择团队流程</h1>
+      <div class="buttons">
+        <button class="button button-right button-clear" ng-click="addFromUser()">完成</button>
+      </div>
+    </ion-header-bar>
+    <ion-content style="margin-top:12px;">
+        <h2 class="small-title">团队</h2>
+        <div class="input-box" ng-class="{expand:showTeam}">
+            <input type="text" placeholder="请选择团队" ng-model="team.v" ng-class="{'border-none':showTeam}" readonly="true" ng-click="showTeamList()" ng-blur="hideTeamList()">
+            <i class="icon" ng-class="{'ion-ios-arrow-down':!showTeam,'ion-ios-arrow-up':showTeam}"></i>
+            <ion-scroll zooming="false" ng-show="showTeam" direction="y">
+                <ion-list>
+                    <ion-radio name="team" ng-repeat="item in teamList" icon="ion-checkmark-circled" ng-value="item.k" ng-model="teamInfo.teamId" ng-change="selectTeam(item)">{{item.v}}</ion-radio>
+                </ion-list>
+            </ion-scroll>
+        </div>
+        <h2 class="small-title">基本流程</h2>
+        <div class="input-box" ng-class="{expand:showProcess}">
+            <input type="text" placeholder="请选择基本流程" ng-model="process.v" ng-class="{'border-none':showProcess}" ng-blur="hideProcessList()" readonly="true" ng-click="showProcessList()">
+            <i class="icon" ng-class="{'ion-ios-arrow-down':!showProcess,'ion-ios-arrow-up':showProcess}"></i>
+            <ion-scroll zooming="false" ng-show="showProcess" direction="y">
+                <ion-list>
+                    <ion-radio name="process" ng-repeat="item in processList" icon="ion-checkmark-circled" ng-value="item.k" ng-model="teamInfo.processId" ng-change="selectProcess(item)">{{item.v}}</ion-radio>
+                </ion-list>
+            </ion-scroll>
+        </div>
+        <h2 class="small-title">详细流程</h2>
+        <div class="input-box" ng-class="{expand:showProcessDetails}">
+            <input type="text" placeholder="请选择详细流程" ng-model="processDetails.v" ng-class="{'border-none':showProcessDetails}" ng-blur="hideProcessDetailsList()" readonly="true" ng-click="showProcessDetailsList()">
+            <i class="icon" ng-class="{'ion-ios-arrow-down':!showProcessDetails,'ion-ios-arrow-up':showProcessDetails}"></i>
+            <ion-scroll zooming="false" ng-show="showProcessDetails" direction="y">
+                <ion-list>
+                    <ion-radio name="processDetails" ng-repeat="item in processDetailsList" icon="ion-checkmark-circled" ng-value="item.k" ng-model="teamInfo.detailId" ng-change="selectProcessDetails(item)">{{item.v}}</ion-radio>
+                </ion-list>
+            </ion-scroll>
+        </div>
+    </ion-content>
+</ion-modal-view>

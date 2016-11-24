@@ -1,0 +1,163 @@
+<ion-view title="患者详情" hide-nav-bar="true" class="patient-info" ng-click="hideMenus()">
+    <ion-header-bar align-title="center">
+        <div class="buttons">
+            <button class="button-clear button ion-back" ng-click="back()">
+                <i class="icon ion-ios-arrow-left"></i>
+            </button>
+        </div>
+        <h1 class="title">患者详情</h1>
+        <i class="icon ion-more bar-icon" ng-click="showMenus($event)"></i>
+    </ion-header-bar>
+    <ion-content>
+        <a class="item item-avatar" ng-click="goToPatientBaseInfo()">
+            <img src="{{patientInfo.portraitUrl}}">
+            <h2>{{patientInfo.pname}}
+                <span>男</span>
+                <span>{{patientInfo.age}}岁</span>
+            </h2>
+            <p>登记号:{{patientInfo.registerNum}}</p>
+            <div class="tag clearfix">
+                <span ng-repeat="tagItem in patientInfo.tagList">{{tagItem.tagText}}</span>
+            </div>
+        </a>
+        <h1 class="item-title"><img src="../../../core/images/icon-doctor@2x.png"/>负责医生</h1>
+        <div class="row row-doctor">
+            <div class="col">
+                主任医师
+                <span>{{patientInfo.directorDname}}</span>
+            </div>
+            <div class="col">
+                主治医师
+                <span>{{patientInfo.attendingDname}}</span>
+            </div>
+            <div class="col">
+                管床医生
+                <span>{{patientInfo.tubebedDname}}</span>
+            </div>
+        </div>
+        <h1 class="item-title"><img src="../../../core/images/icon-diagnose@2x.png"/>诊断信息</h1>
+        <div class="row row-bottom row-padding row-diagnose">
+            <div class="col">
+                {{patientInfo.diagnose}}
+            </div>
+        </div>
+        <h1 class="item-title"><img src="../../../core/images/icon-mark@2x.png"/>备注</h1>
+        <div class="row row-bottom row-padding row-diagnose">
+            <div class="col">
+                {{patientInfo.remark}}
+            </div>
+        </div>
+        <div class="progress-info" ng-class="{'progress-info-first':$first}" ng-repeat="item in patientInfo.processDetailInfo.nodeList">
+            <div class="img-info clearfix">
+                <img src="../../../core/images/status－2@2x.png"/>
+                <img src="{{item.nodeImg}}"/>
+                <span>{{item.nodeName}}</span>
+                <span>{{item.nodeTime | date:'yyyy/MM/dd'}}</span>
+                <img src="../../../core/images/icon-add@2x.png" ng-class="{'img-rotate':item.showBottomBtns}" ng-click="showBottom(item,$event)"/>
+                <h2>{{item.linkName}}</h2>
+            </div>
+            <div class="event-list">
+                <div class="event-tag clearfix" ng-if="item.formList.length > 0" ng-repeat="subItem in item.formList">
+                    <div class="tag-box">
+                        <span>{{subItem.eventTitle}}</span>
+                        <em ng-show="subItem.isRead == 0"></em>
+                    </div>
+                </div>
+                <div class="notice-tag clearfix" ng-if="item.noticeList.length > 0">
+                    <div class="tag-box" ng-repeat="subItem in item.noticeList" ng-click="openNoticeViewModal(subItem)">
+                        <span>{{subItem.eventTitle}}</span>
+                        <em ng-show="subItem.isRead == 0"></em>
+                    </div>
+                </div>
+                <!-- <div class="notice-tag clearfix" ng-if="item.taskList.length > 0">
+                    <div class="tag-box" ng-repeat="subItem in item.taskList" ng-click="openTaskViewModal(subItem)">
+                        <span>{{subItem.eventTitle}}</span>
+                        <em ng-show="subItem.isRead == 0"></em>
+                    </div>
+                </div> -->
+                <div class="opt-tag clearfix" ng-if="item.optList.length > 0">
+                    <div class="tag-box" ng-repeat="subItem in item.optList">
+                        <span>{{subItem.eventTitle}}</span>
+                        <span>{{subItem.eventTargetNum}}</span>
+                    </div>
+                </div>
+                <div class="event-img clearfix" ng-if="item.imgList.length > 0">
+                    <div class="img-box" ng-repeat="subItem in item.imgList" ng-click="openImgViewModal(subItem)">
+                        <img src="{{subItem.eventThumbUrl}}"/>
+                        <span>{{subItem.eventTitle}}</span>
+                    </div>
+                </div>
+                <div class="event-video clearfix" ng-if="item.videoList.length > 0">
+                    <div class="video-box" ng-repeat="subItem in item.videoList" ng-click="openVideoViewModal(subItem)">
+                        <img src="{{subItem.eventThumbUrl}}"/>
+                        <span>{{subItem.eventTitle}}</span>
+                        <img src="../../../core/images/icon-video@2x.png"/>
+                    </div>
+                </div>
+                <div class="event-word clearfix" ng-if="item.wordList.length > 0">
+                    <div class="word-box" ng-repeat="subItem in item.wordList">
+                        <img src="../../../core/images/word@2x.png"/>
+                        <p>{{subItem.eventTitle}}</p>
+                    </div>
+                </div>
+                <div class="event-words clearfix" ng-if="item.wordsList.length > 0">
+                    <div class="words-box" ng-repeat="subItem in item.wordsList" ng-click="openWordsViewModal(subItem)">
+                        <h1><img src="../../../core/images/icon-words@2x.png"/>
+                            <span>文字</span>
+                        </h1>
+                        <h2>{{subItem.eventTitle}}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <ion-footer-bar ng-if="showBottomBtns">
+        <div class="row">
+            <div class="col" ng-click="openModal()">
+                <img src="../../../core/images/icon-words／add@2x.png"/>
+                文字
+            </div>
+            <div class="col" ng-click="showActionSheet()">
+                <img src="../../../core/images/icon-img／add@2x.png"/>
+                图片
+            </div>
+            <div class="col" ng-click="takePhoto(1)">
+                <img src="../../../core/images/icon-video／add@2x.png"/>
+                视频
+            </div>
+        </div>
+    </ion-footer-bar>
+    <script id="words-modal.html" type="text/ng-template">
+        <ion-modal-view class="patient-add patient-modal patient-info">
+            <ion-header-bar align-title="center">
+                <div class="buttons">
+                    <a class="button button-icon icon ion-ios-close-empty button-left" ng-click="closeModal()"></a>
+                </div>
+                <h1 class="title nomal-title">文字编辑</h1>
+                <div class="buttons">
+                    <button class="button button-right button-clear" ng-click="addWords()">确定</button>
+                </div>
+            </ion-header-bar>
+            <ion-content>
+                <h2 class="small-title">标题</h2>
+                <div class="input-box">
+                    <input type="text" placeholder="请输入标题" ng-model="wordsInfo.wordTitle">
+                </div>
+                <h2 class="small-title">内容</h2>
+                <div class="input-box">
+                    <textarea name="name" rows="5" cols="40" placeholder="请输入内容" ng-model="wordsInfo.wordContent"></textarea>
+                </div>
+                <ion-list>
+                    <ion-checkbox ng-model="wordsInfo.isView" ng-true-value="1" ng-false-value="0">病人可见</ion-checkbox>
+                </ion-list>
+            </ionic-content>
+        </ion-modal-view>
+    </script>
+    <div class="menus" ng-show="displayMenus">
+        <em></em>
+        <ul>
+            <li ng-click="changeProgress()">更改流程</li>
+            <li ng-click="stopProgress()">终止流程</li>
+        </ul>
+    </div>
+</ion-view>

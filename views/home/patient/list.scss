@@ -1,0 +1,56 @@
+@charset 'utf-8';
+.inpatient-list {
+    .title {
+        color: #fff;
+    }
+    .item {
+        border-color: #e1e2e2;
+        background-color: #fbfcfc;
+    }
+    .item-avatar {
+        position: relative;
+        h2 {
+            font-size: 16px;
+            color: #181f2a;
+            font-weight: bold;
+            span {
+                font-weight: normal;
+                font-size: 12px;
+                margin-left: 12px;
+            }
+            span:last-child {
+                margin-left: 8px;
+            }
+            img {
+                position: absolute;
+                top:16px;
+                right: 24px;
+                height: 16px;
+                width: 109px;
+            }
+            img:last-child {
+                top:12px;
+                width: 24px;
+                height: 24px;
+                right: 12px;
+            }
+        }
+        h4 {
+            position: absolute;
+            top:17px;
+            left: 258px;
+        }
+        @media screen and (max-width: 330px){
+            h4 {
+                left: 208px;
+            }
+        }
+        p {
+            font-size: 12px;
+            color: #84898d;
+        }
+        img {
+            top: 35px;
+        }
+    }
+}

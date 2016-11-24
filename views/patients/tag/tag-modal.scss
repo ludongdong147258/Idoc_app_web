@@ -1,0 +1,19 @@
+@charset "UTF-8";
+.tag-modal {
+    background: #fbfcfc;
+    .container {
+        padding-top: 12px;
+        .input-box {
+            position: relative;
+            span {
+                color: #84898d;
+                position: absolute;
+                right: 12px;
+                top: 0;
+                display: inline-block;
+                height: 44px;
+                line-height: 44px;
+            }
+        }
+    }
+}

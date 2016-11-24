@@ -1,0 +1,16 @@
+<ion-modal-view class="patient-add patient-modal tag-modal diagnose-modal">
+    <ion-header-bar align-title="center">
+        <div class="buttons">
+            <a class="button button-icon icon ion-ios-close-empty button-left" ng-click="closeDiagnoseModal()"></a>
+        </div>
+        <h1 class="title">诊断信息</h1>
+        <div class="buttons">
+            <button class="button button-right button-clear" ng-click="saveDiagnoseInfo()">保存</button>
+        </div>
+    </ion-header-bar>
+    <ion-content class="container">
+        <div class="input-box">
+            <textarea rows="8" cols="40" placeholder="请输入诊断信息" ng-model="diagnoseInfo.value"></textarea>
+        </div>
+    </ionic-content>
+</ion-modal-view>

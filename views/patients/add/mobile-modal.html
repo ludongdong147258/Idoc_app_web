@@ -1,0 +1,35 @@
+<ion-modal-view class="patient-add patient-modal mobile-modal">
+    <ion-header-bar align-title="center">
+        <div class="buttons">
+            <a class="button button-icon icon ion-ios-close-empty button-left" ng-click="closeMobileModal()"></a>
+        </div>
+        <h1 class="title">添加患者</h1>
+        <div class="buttons">
+            <button class="button button-right button-clear" ng-click="createPatInfo()">确认新建</button>
+        </div>
+    </ion-header-bar>
+    <ion-content class="container">
+        <h2 class="small-title">身份证号</h2>
+        <div class="input-box">
+            <input type="text" placeholder="请输入身份证号" ng-model="patInfo.idCard">
+        </div>
+        <div class="mutile-input">
+            <div class="left">
+                <h2 class="small-title">手机号</h2>
+                <div class="input-box">
+                    <input type="text" placeholder="请输入手机号" ng-model="patInfo.phone">
+                </div>
+            </div>
+            <div class="right">
+                <div class="input-box">
+                    <span class="input-span" ng-disabled="showGetCode" ng-click="getSmsCode()" ng-hide="showGetCode">获取验证码</span>
+                    <span class="input-span" ng-show="showGetCode">{{count}}s</span>
+                </div>
+            </div>
+        </div>
+        <h2 class="small-title">验证码</h2>
+        <div class="input-box">
+            <input type="text" placeholder="请输入验证码" ng-model="patInfo.code">
+        </div>
+    </ionic-content>
+</ion-modal-view>

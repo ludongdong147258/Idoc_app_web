@@ -1,0 +1,20 @@
+@charset 'utf-8';
+@import 'helpers/helpers';
+/// @group undefined
+/// @author hys
+////
+$ionicons-font-path: '.' !default;
+
+// Include all of lib,
+@import './src/lib/ionic/scss/ionic';
+
+// 自定义通用类的scss文件
+@import 'scss/animations',
+        'scss/reset',
+        'scss/global',
+        'scss/bar',
+        'scss/form',
+        'scss/popup',
+        'scss/tabs-header',
+        'scss/loading',
+        'scss/button';

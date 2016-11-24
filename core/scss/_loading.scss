@@ -1,0 +1,214 @@
+// @-moz-keyframes spin {
+//     0% {
+//         -moz-transform: rotate(0deg);
+//     }
+//     100% {
+//         -moz-transform: rotate(359deg);
+//     }
+// }
+// @-webkit-keyframes spin {
+//     0% {
+//         -webkit-transform: rotate(0deg);
+//     }
+//     100% {
+//         -webkit-transform: rotate(359deg);
+//     }
+// }
+// @-o-keyframes spin {
+//     0% {
+//         -o-transform: rotate(0deg);
+//     }
+//     100% {
+//         -o-transform: rotate(359deg);
+//     }
+// }
+// @-ms-keyframes spin {
+//     0% {
+//         -ms-transform: rotate(0deg);
+//     }
+//     100% {
+//         -ms-transform: rotate(359deg);
+//     }
+// }
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(359deg);
+    }
+}
+
+// 360°旋转的 icon
+.icon-spin {
+    -webkit-animation: spin 1s infinite linear;
+       -moz-animation: spin 1s infinite linear;
+         -o-animation: spin 1s infinite linear;
+            animation: spin 1s infinite linear;
+}
+
+// 每8帧停顿
+.icon-steps {
+    -webkit-animation-timing-function: steps(8, start);
+       -moz-animation-timing-function: steps(8, start);
+         -o-animation-timing-function: steps(8, start);
+            animation-timing-function: steps(8, start);
+}
+
+// 动态 loading，我也不清楚为啥上面的css3效果在ios真机上不生效，所以借鉴下拉刷新里的 svg 实现
+// 动态弹出层里的 loading 图标效果
+.loading-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 70px;
+    height: 70px;
+
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    .spinner {
+        stroke: #fff;
+        fill: #fff;
+    }
+}
+.spinner svg {
+    width: 20px;
+    height: 20px;
+}
+
+// 因滚动列表与底部有一定距离，所以将等待图标向上提
+// ion-infinite-scroll {
+//     margin-top: -25px;
+// }
+
+// 图片懒加载
+// -----------------------------------------------------------------------------
+.lazyload.p-img {
+    position: relative;
+
+    width: 100%;
+
+    @extend .ion;
+    &::after {
+        font-size: 30px;
+
+        position: absolute;
+        z-index: 2;
+        top: 50%;
+        left: 50%;
+
+        width: 30px;
+        height: 30px;
+        margin-top: -15px;
+        margin-left: -15px;
+        // content: '\f29a';
+
+        content: '\f45a';
+        /* ionic font 有 a,b,c,d 四种可选*/
+        text-align: center;
+
+        color: #999;
+
+        @extend .icon-spin;
+        @extend .icon-steps;
+    }
+}
+
+// Scroll refresher (for pull to refresh)
+// -----------------------------------------------------------------------------
+.scroll-refresher {
+    .ionic-refresher-content {
+        font-size: 12px;
+
+        color: #666;
+        .text-pulling {
+            font-size: 12px;
+            line-height: 12px;
+        }
+    }
+    .icon-pulling {
+        transform: none;
+        animation: none;
+        &::after {
+            font-weight: normal;
+
+            position: static;
+
+            display: inline-block;
+
+            content: ' 下拉可以刷新';
+        }
+        .icon {
+            display: inline-block;
+
+            padding: 0 5px;
+
+            -webkit-transform: translate3d(0, 0, 0) rotate(0deg);
+                    transform: translate3d(0, 0, 0) rotate(0deg);
+
+            @include animation-name(refresh-spin-back);
+            @include animation-duration(200ms);
+            @include animation-timing-function(linear);
+            @include animation-fill-mode(none);
+            &::before {
+                content: '\f103';
+            }
+        }
+    }
+    &.active {
+        .icon-pulling:not(.pulling-rotation-disabled) {
+            transform: none;
+            animation: none;
+            &::after {
+                content: ' 松开立即更新';
+            }
+            .icon {
+                -webkit-transform: translate3d(0, 0, 0) rotate(-180deg);
+                        transform: translate3d(0, 0, 0) rotate(-180deg);
+
+                @include animation-name(refresh-spin);
+                &::before {
+                    // content: '\f10c';
+                }
+            }
+        }
+    }
+}
+
+// ... 加载动画
+// -----------------------------------------------------------------------------
+@keyframes bouncedelay {
+    0%,
+    80%,
+    100% {
+        transform: scale(0);
+    }
+    40% {
+        transform: scale(1);
+    }
+}
+.three-bounce {
+    position: relative;
+
+    margin-left: 5px;
+
+    text-align: center;
+}
+.three-bounce > i {
+    display: inline-block;
+
+    width: 5px;
+    height: 5px;
+
+    animation: bouncedelay 1.4s infinite ease-in-out both;
+
+    border-radius: 100%;
+    background-color: #fff;
+    &:nth-child(1) {
+        animation-delay: -.32s;
+    }
+    &:nth-child(2) {
+        animation-delay: -.16s;
+    }
+}
